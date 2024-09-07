@@ -1,55 +1,5 @@
 import Button from "./UI/Button";
-import { FaFacebook } from "react-icons/fa6";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa6";
-import { FaSquareInstagram } from "react-icons/fa6";
-
-
-const links = [
-	{
-		'id': 1,
-		'name': 'Home',
-		'path': '/home',
-	},
-	{
-		'id': 2,
-		'name': 'Blog',
-		'path': '/blog',
-	},
-	{
-		'id': 3,
-		'name': 'About',
-		'path': '/about',
-	},
-	{
-		'id': 1,
-		'name': 'Contact Us',
-		'path': '/contact',
-	}
-]
-
-const socials = [
-	{
-		"id": 1,
-		'name': 'Facebook',
-		'icon': <FaFacebook  size={25} />
-	},
-	{
-		"id": 2,
-		'name': 'LinkedIn',
-		'icon': <FaLinkedin  size={25} />
-	},
-	{
-		"id": 3,
-		'name': 'Instagram',
-		'icon': <FaSquareInstagram  size={25} />
-	},
-	{
-		"id": 4,
-		'name': 'Twitter',
-		'icon': <FaXTwitter  size={25} />
-	}
-]
+import { links, socials } from "../utils/links";
 
 function Footer() {
 	return (

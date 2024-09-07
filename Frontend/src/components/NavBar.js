@@ -1,12 +1,16 @@
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { RiMenu5Fill } from "react-icons/ri";
 
 import Button from "./UI/Button";
-import { useState } from "react";
 import PopMenu from "./PopMenu";
+import { links } from "../utils/links";
 
 function NavBar() {
 	const [open, setIsopen] = useState(false);
+
+	const location = useLocation();
 
 	const toggleMenu = () => {
 		setIsopen(!open);
@@ -18,9 +22,13 @@ function NavBar() {
 				<div className="border">
 					<img src="/static/images/BlogPost4.png"  alt="Blog Post" className="w-8" />
 				</div>
-				<div className="hidden md:visible md:flex justify-between items-center w-72">
-					<h1>Blog</h1>
-					<h1>About</h1>
+				<div className="hidden md:visible md:flex justify-between items-center w-80">
+					{links.map((link) => link.id !== 4 ? (
+						<a
+							href={link.path}
+							className={`${location.pathname === link.path ? 'text-[#7C4EE4]': ''}`}
+							>{link.name}</a>
+					): null)}
 					<FiSearch size={24} className="cursor-pointer" />
 					<Button text={'Contact Us'} bg={'#7C4EE4'} />
 				</div>
