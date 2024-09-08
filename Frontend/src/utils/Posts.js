@@ -112,7 +112,7 @@ export const allPosts = [
 	},
 	{
 		'id': 5,
-		'pic': '/static/images/development3.png',
+		'pic': '/static/images/development4.jpg',
 		'category': 'Development',
 		'date': '11th March 2024',
 		'title': 'How to Start Export Import Business From Home',
@@ -149,5 +149,18 @@ export const allPosts = [
 		'date': '10th March 2024',
 		'title': 'How to Be a Professional Footballer in 2024',
 		'text': 'Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive'
+	},
+	{
+		'id': 10,
+		'pic': '/static/images/featured.png',
+		'category': 'Development',
+		'date': '10th March 2024',
+		'title': 'How to make a Game look more attractive with New VR & AI Technology',
+		'text': 'Google has been investing in AI for many years and bringing its benefits to individuals, businesses and communities. Whether it’s publishing state-of-the-art research, building helpful products or developing tools and resources that enable others, we’re committed to making AI accessible to everyone.',
+		'quote': 'People worry that computers will get too smart and take over the world, but the real problem is that they’re too stupid and they’ve already taken over the world.',
+		'quote_name': 'Jack Mwangi',
+		'text_two': 'More than 3 billion people already benefit from AI-powered features in Google Workspace, whether it’s using Smart Compose in Gmail or auto-generated summaries in Google Docs. Now, we’re excited to take the next step and bring a limited set of trusted testers a new set of features that makes the process of writing even easier. In Gmail and Google Docs, you can simply type in a topic you’d like to write about, and a draft will be instantly generated for you. So if you’re a manager onboarding a new employee, Workspace saves you the time and effort involved in writing that first welcome email. From there, you can elaborate upon or abbreviate the message or adjust the tone to be more playful or professional — all in just a few clicks. We’ll be rolling out these new experiences to testers in the coming weeks.',
+		'text_three': 'We’re so excited by the potential of generative AI, and the opportunities it will unlock — from helping people express themselves creatively, to helping developers build brand new types of applications, to transforming how businesses and governments engage their customers and constituents. Stay tuned for more to come in the weeks and months ahead.'
+
 	}
 ]

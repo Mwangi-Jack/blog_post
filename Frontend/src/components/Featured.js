@@ -1,4 +1,4 @@
-import Button from "./UI/Button";
+import { Link } from "react-router-dom";
 
 function Featured() {
 	return (
@@ -21,7 +21,9 @@ function Featured() {
 								communities. Whether it’s publishing state-of-the`everyone.
 							</p>
 
-							<Button text={'Read More'} bg={'#FFFFFF'} />
+							<div>
+								<Link className="border rounded px-2 py-1 text-xl font-medium border-[#7C4EE4] text-[#7C4EE4] p-2" to={'/posts/10'} >Read More</Link>
+							</div>
 						</div>
 					</div>
 				</div>

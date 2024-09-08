@@ -5,6 +5,7 @@ import './index.css'
 
 const Home = lazy(() => import('./pages/LandingPage'));
 const Blog = lazy(() => import ('./pages/BlogsPage'));
+const PostView = lazy(() => import('./pages/PostView'));
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/blog' element={<Blog />} />
+            <Route path='/posts/:id' element={<PostView />} />
         </Routes>
       </Suspense>
     </Router>

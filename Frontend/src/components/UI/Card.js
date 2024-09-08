@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 function Card({ post }) {
 	return (
@@ -14,7 +15,7 @@ function Card({ post }) {
 				</div>
 			</div>
 			<div className="mt-2">
-				<a href={post.id}>Read More...</a>
+				<Link to={`/posts/${post.id}`}>Read More...</Link>
 			</div>
 		</div>
 	)
