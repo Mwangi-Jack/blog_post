@@ -25,12 +25,15 @@ function Footer() {
 						<a href={link.path} >{link.name}</a>
 					))}
 				</div>
-				<div className="flex justify-center space-x-4">
+				<div className="flex justify-center space-x-4 text-[#7C4EE4]">
 					{socials.map((social) => (
 						<span>{social.icon}</span>
 					))}
 				</div>
-				<div>
+				<div className="font-mono space-y-10">
+					<div className="flex justify-center">
+						<hr className="w-full md:w-3/4 h-[2px]  bg-[#7C4EE4]"/>
+					</div>
 					&copy; Blog Post 2024
 				</div>
 			</div>

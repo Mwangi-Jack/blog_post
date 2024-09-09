@@ -59,7 +59,7 @@ function ContactForm() {
 					/>
 				</div>
 				<div className="flex flex-col space-y-1">
-					<label for='subject' >Subject</label>
+					<label for='subject'>Subject</label>
 					<input
 						className='border rounded h-8 p-2'
 						type="text"
