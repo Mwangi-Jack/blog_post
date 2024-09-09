@@ -8,6 +8,7 @@ const Blog = lazy(() => import ('./pages/BlogsPage'));
 const PostView = lazy(() => import('./pages/PostView'));
 const Contacts = lazy(() => import ('./pages/ContactPage'));
 const About = lazy(() => import('./pages/AboutPage'));
+const NotFound = lazy(() => import('./pages/NotfoundPage'));
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path='/posts/:id' element={<PostView />} />
             <Route path='/contact' element= {<Contacts />} />
             <Route path='/about' element={<About />} />
+            <Route path='*' element={<NotFound />} />
         </Routes>
       </Suspense>
     </Router>
