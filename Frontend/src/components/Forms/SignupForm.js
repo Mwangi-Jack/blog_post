@@ -1,0 +1,123 @@
+import React, { useState } from "react";
+import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/style.css'
+import FloatingLabelInput from "../UI/FloatingLabelInput";
+import { Link } from "react-router-dom";
+
+function SignupForm() {
+	const [ formData, setFormData ] = useState({
+		'Fname': '',
+		'Sname': '',
+		'email': '',
+		'phone': '',
+		'password': '',
+	})
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData({...formData, [name]:value})
+	}
+
+	const handlePhoneInput = (value) => {
+		setFormData({...formData, "phone": value})
+	}
+
+	return (
+		<div>
+			<div className="md:flex md:space-x-4">
+				<FloatingLabelInput
+					type="text"
+					name='Fname'
+					label={'First Name'}
+					handleChange={handleChange}
+					value={formData.Fname}
+					/>
+				<FloatingLabelInput
+					type="text"
+					name='Sname'
+					label={'Second Name'}
+					handleChange={handleChange}
+					value={formData.Fname}
+					/>
+			</div>
+			<div className="md:flex md:space-x-4">
+				<FloatingLabelInput
+					type="email"
+					name='email'
+					label={'Email'}
+					handleChange={handleChange}
+					value={formData.Fname}
+					/>
+                    <PhoneInput
+                        className='h-[40px] mt-4'
+                        country={'ke'}
+                        value={formData.phone}
+                        name={"phone"}
+                        onChange={handlePhoneInput}
+                        inputStyle={{
+                        width: '100%',
+                        border: '1px solid #ccc',
+                        borderRadius: '4px',
+                        height:'100%',
+                        outline: 'none'
+                        }}
+                        inputProps={{required: true}}
+                        containerStyle={{ width: '100%' }}
+                    />
+
+			</div>
+			<div className="md:flex md:space-x-4">
+				<FloatingLabelInput
+					type="password"
+					name='password'
+					label={'Password'}
+					handleChange={handleChange}
+					value={formData.Fname}
+					/>
+				<FloatingLabelInput
+					type="password"
+					name='cpassword'
+					label={'Confirm Password'}
+					handleChange={handleChange}
+					value={formData.Fname}
+					/>
+			</div>
+			<div className="flex space-x-2">
+				<input
+				type="checkbox"
+				/>
+				<p className="space-x-1">
+					<span>I agree to the</span>
+					<Link to={'/terms'} className="text-[#7C4EE4]">Terms</Link>
+					<span>and</span>
+					<Link to={'/policies'} className="text-[#7C4EE4]" >Policies</Link>
+				</p>
+			</div>
+			<div className="my-4">
+				<button className="bg-[#7C4EE4] p-2 rounded text-white w-full">Create Account</button>
+			</div>
+			<div className="flex justify-center space-x-2">
+				<p>Already have an account?</p>
+				<Link to={'/login'} className="text-[#7C4EE4]">Login</Link>
+			</div>
+			<div className="my-6 flex justify-center items-center md:mx-16 space-x-1 md:space-x-2">
+				<hr className="w-28 md:w-44 h-[2px]  bg-[#7C4EE4]"/>
+				<div><span>Or Signup with</span></div>
+				<hr className="w-28 md:w-44  h-[2px]  bg-[#7C4EE4]"/>
+			</div>
+			<div className="flex justify-center space-x-10 my-10">
+				<div className="border w-16 h-8 flex justify-center py-1 rounded cursor-pointer border-[#7C4EE4]">
+					<img src="/static/images/fb.png" alt="Facebook" />
+				</div>
+				<div className="border w-16 h-8 flex justify-center py-1 rounded cursor-pointer border-[#7C4EE4]">
+					<img src="/static/images/google.png" alt="Google" />
+				</div>
+				<div className="border w-16 h-8 flex justify-center py-1 rounded cursor-pointer border-[#7C4EE4]">
+					<img src="/static/images/mac.png" alt="Mac" />
+				</div>
+			</div>
+		</div>
+	)
+}
+
+export default SignupForm;

@@ -23,7 +23,7 @@ import { FaSquareInstagram } from "react-icons/fa6";
 	},
 	{
 		'id': 4,
-		'name': 'Contact Us',
+		'name': 'Contacts',
 		'path': '/contact',
 	}
 ]
