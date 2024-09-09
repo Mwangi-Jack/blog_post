@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { RiMenu5Fill } from "react-icons/ri";
 
-import Button from "./UI/Button";
 import PopMenu from "./PopMenu";
 import { links } from "../utils/links";
 
@@ -30,7 +29,7 @@ function NavBar() {
 							>{link.name}</a>
 					): null)}
 					<FiSearch size={24} className="cursor-pointer" />
-					<Button text={'Contact Us'} bg={'#7C4EE4'} />
+					<Link className="border px-4 py-1 bg-[#7C4EE4] text-white rounded" to='/contacts'>Contact Us</Link>
 				</div>
 				<div className="md:hidden">
 					<RiMenu5Fill onClick={toggleMenu} size={25} />
