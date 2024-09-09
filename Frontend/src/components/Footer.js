@@ -6,7 +6,7 @@ function Footer() {
 		<div className="">
 			<div className="text-white h-90 bg-[#7C4EE4] flex flex-col justify-center items-center w-full h-72 space-y-4 px-2">
 				<h1 className="text-lg md:text-4xl font-bold md:w-1/2 text-center">Get Our Stories Delivered From Us To Your Inbox Weekly.</h1>
-				<div className="space-x-4">
+				<div className="space-x-1 md:space-x-4">
 					<input className="h-10 rounded outline-none px-4 text-gray-500" placeholder="Your Email" />
 					<Button text={'Get Started'} bg={'#FFF'} />
 				</div>
