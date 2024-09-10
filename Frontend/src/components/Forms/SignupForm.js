@@ -12,16 +12,22 @@ function SignupForm() {
 		'email': '',
 		'phone': '',
 		'password': '',
-	})
+		'cpassword': ''
+	});
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormData({...formData, [name]:value})
-	}
+	};
 
 	const handlePhoneInput = (value) => {
 		setFormData({...formData, "phone": value})
-	}
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(formData);
+	};
 
 	return (
 		<div>
@@ -38,7 +44,7 @@ function SignupForm() {
 					name='Sname'
 					label={'Second Name'}
 					handleChange={handleChange}
-					value={formData.Fname}
+					value={formData.Sname}
 					/>
 			</div>
 			<div className="md:flex md:space-x-4">
@@ -47,7 +53,7 @@ function SignupForm() {
 					name='email'
 					label={'Email'}
 					handleChange={handleChange}
-					value={formData.Fname}
+					value={formData.email}
 					/>
                     <PhoneInput
                         className='h-[40px] mt-4'
@@ -73,14 +79,14 @@ function SignupForm() {
 					name='password'
 					label={'Password'}
 					handleChange={handleChange}
-					value={formData.Fname}
+					value={formData.password}
 					/>
 				<FloatingLabelInput
 					type="password"
 					name='cpassword'
 					label={'Confirm Password'}
 					handleChange={handleChange}
-					value={formData.Fname}
+					value={formData.cpassword}
 					/>
 			</div>
 			<div className="flex space-x-2">
@@ -95,7 +101,7 @@ function SignupForm() {
 				</p>
 			</div>
 			<div className="my-4">
-				<button className="bg-[#7C4EE4] p-2 rounded text-white w-full">Create Account</button>
+				<button onClick={handleSubmit} className="bg-[#7C4EE4] p-2 rounded text-white w-full">Create Account</button>
 			</div>
 			<div className="flex justify-center space-x-2">
 				<p>Already have an account?</p>

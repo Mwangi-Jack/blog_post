@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import FloatingLabelInput from '../../components/UI/FloatingLabelInput';
+
 
 function SetPassword() {
 	const [ formData, setFormData ] = useState({

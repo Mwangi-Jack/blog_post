@@ -1,8 +1,14 @@
 import React , { useState } from 'react'
+import { IoIosEye } from "react-icons/io";
+import { IoIosEyeOff } from "react-icons/io";
 
 
 function FloatingLabelInput({ type='text', name, label, handleChange, value}){
     const [ isFocused, setIsFocused ] = useState(false);
+    const [ showPasswd, setShowPasswd ] = useState({
+        'password': false,
+        'cpassword': false
+    })
 
     const handleFocus = ()=>{
         setIsFocused(true)
@@ -11,11 +17,19 @@ function FloatingLabelInput({ type='text', name, label, handleChange, value}){
     const handleBlur = ()=> {
         setIsFocused(value === " ")
     }
+
+    const handlePasswordToggle = (name) => {
+        setShowPasswd({...showPasswd, [name]: !showPasswd[name]});
+    }
+
     return (
-        <div className='relative my-4 w-full'>
+        <div className='relative my-4 w-full cursor-pointer'>
+            <div onClick={()=> handlePasswordToggle(name)} className='absolute right-4 top-2 '>
+                { type === 'password' ? showPasswd[name] ? <IoIosEye size={25} /> : <IoIosEyeOff size={25} /> : null}
+            </div>
             <input
                 className='w-full px-3 py-2 border border-gray-300 rounded-lg outline-none focus:border-blue-600 transition-all duration-200'
-                type={type}
+                type={ name === 'password' || name === 'cpassword' ? showPasswd[name] ? 'text' : 'password' : type }
                 name={name}
                 value={value}
                 required
