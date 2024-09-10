@@ -13,6 +13,7 @@ const Login = lazy(() => import('./pages/Auth/Login'));
 const Register = lazy(() => import('./pages/Auth/Register'));
 const ForgotPassword = lazy(() => import('./pages/Auth/ForgotPassword'));
 const CodeVerify = lazy(() => import('./pages/Auth/CodeVerify'));
+const SetPassword = lazy(() => import('./pages/Auth/SetPassword'));
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path='/signup' element={<Register />} />
             <Route path='/forgotpassword' element={<ForgotPassword />} />
             <Route path='/code-verification' element={<CodeVerify />} />
+            <Route path='/set-new-password' element={<SetPassword />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
       </Suspense>

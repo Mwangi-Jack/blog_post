@@ -51,7 +51,7 @@ function CodeVerify() {
 					</div>
 				</div>
 				<div className="h-[33rem] hidden md:flex w-[30rem]">
-					<img className="w-full" src="/static/images/forgotpassword.png"  alt="Forgot Password"/>
+					<img className="w-full" src="/static/images/codeverify.png"  alt="Forgot Password"/>
 				</div>
 			</div>
 		</div>
