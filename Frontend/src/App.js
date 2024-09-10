@@ -12,6 +12,7 @@ const NotFound = lazy(() => import('./pages/NotfoundPage'));
 const Login = lazy(() => import('./pages/Auth/Login'));
 const Register = lazy(() => import('./pages/Auth/Register'));
 const ForgotPassword = lazy(() => import('./pages/Auth/ForgotPassword'));
+const CodeVerify = lazy(() => import('./pages/Auth/CodeVerify'));
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path='/signin' element={<Login />} />
             <Route path='/signup' element={<Register />} />
             <Route path='/forgotpassword' element={<ForgotPassword />} />
+            <Route path='/code-verification' element={<CodeVerify />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
       </Suspense>
