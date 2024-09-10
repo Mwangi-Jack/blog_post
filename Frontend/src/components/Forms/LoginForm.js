@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FloatingLabelInput from "../UI/FloatingLabelInput";
+import AuthAccounts from "../UI/AuthAccounts";
 
 function LoginForm() {
 	const [ formData, setFormData ] = useState({
@@ -53,22 +54,12 @@ function LoginForm() {
 				<p>Don't  have an account?</p>
 				<Link to={'/signup'} className="text-[#7C4EE4]">Register</Link>
 			</div>
-			<div className="my-6 flex justify-center items-center md:mx-16 space-x-1 md:space-x-2">
-				<hr className="w-28 md:w-44 h-[2px]  bg-[#7C4EE4]"/>
-				<div><span>Or Signup with</span></div>
-				<hr className="w-28 md:w-44  h-[2px]  bg-[#7C4EE4]"/>
+			<div className="my-6 flex justify-center items-center space-x-1 md:space-x-2">
+				<hr className="w-28 md:w-32 h-[2px]  bg-[#7C4EE4]"/>
+				<div><span>Or Signin with</span></div>
+				<hr className="w-28 md:w-32  h-[2px]  bg-[#7C4EE4]"/>
 			</div>
-			<div className="flex justify-center space-x-10 my-10">
-				<div className="border w-16 h-8 flex justify-center py-1 rounded cursor-pointer border-[#7C4EE4]">
-					<img src="/static/images/fb.png" alt="Facebook" />
-				</div>
-				<div className="border w-16 h-8 flex justify-center py-1 rounded cursor-pointer border-[#7C4EE4]">
-					<img src="/static/images/google.png" alt="Google" />
-				</div>
-				<div className="border w-16 h-8 flex justify-center py-1 rounded cursor-pointer border-[#7C4EE4]">
-					<img src="/static/images/mac.png" alt="Mac" />
-				</div>
-			</div>
+			<AuthAccounts />
 		</div>
 	)
 }

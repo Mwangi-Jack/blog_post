@@ -11,6 +11,7 @@ const About = lazy(() => import('./pages/AboutPage'));
 const NotFound = lazy(() => import('./pages/NotfoundPage'));
 const Login = lazy(() => import('./pages/Auth/Login'));
 const Register = lazy(() => import('./pages/Auth/Register'));
+const ForgotPassword = lazy(() => import('./pages/Auth/ForgotPassword'));
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path='/about' element={<About />} />
             <Route path='/signin' element={<Login />} />
             <Route path='/signup' element={<Register />} />
+            <Route path='/forgotpassword' element={<ForgotPassword />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
       </Suspense>

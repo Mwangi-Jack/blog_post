@@ -29,7 +29,7 @@ function NavBar() {
 							>{link.name}</a>
 					))}
 					<FiSearch size={24} className="cursor-pointer" />
-					<Link className="border px-4 py-1 bg-[#7C4EE4] text-white rounded" to='/contacts'>Register</Link>
+					<Link className="border px-4 py-1 bg-[#7C4EE4] text-white rounded" to='/signup'>Register</Link>
 				</div>
 				<div className="md:hidden">
 					<RiMenu5Fill onClick={toggleMenu} size={25} />
