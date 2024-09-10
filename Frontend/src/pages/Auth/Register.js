@@ -13,7 +13,7 @@ function Register() {
 				<img className="border-2 w-10" src='/static/images/BlogPost1.png'  alt="BlOG POST LOGO" />
 			</div>
 			<div className="md:flex md:justify-between md:mx-10 mt-10">
-				<div className="h-[35rem] hidden md:flex w-[30rem]" >
+				<div className="h-[33rem] hidden md:flex w-[30rem]" >
 					<img className="h-full w-full"  src="/static/images/register.png" alt="Register" />
 				</div>
 				<div className="md:w-1/2">

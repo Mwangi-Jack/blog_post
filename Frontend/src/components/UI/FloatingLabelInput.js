@@ -18,7 +18,7 @@ function FloatingLabelInput({ type='text', name, label, handleChange, value}){
                 type={type}
                 name={name}
                 value={value}
-                required={true}
+                required
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
