@@ -201,5 +201,13 @@ export const PopularUserPosts = [
 		'tags': ['Sports', 'Development', 'Career'],
 		'title': 'How to Be a Professional Footballer in 2024',
 		'text': 'Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive'
+	},
+	{
+		'id': 6,
+		'pic': '/static/images/sports3.png',
+		'category': 'Sports',
+		'date': '10th March 2024',
+		'title': 'Make Some Drinks Wich Chocolates and Milk',
+		'text': 'Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive'
 	}
 ]

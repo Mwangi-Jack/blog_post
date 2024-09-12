@@ -13,7 +13,7 @@ function TopBar() {
 		alert('Toggled!');
 	}
 	return (
-		<div className="fixed w-full flex justify-between items-center pt-1 px-4 bg-white shadow-md">
+		<div className="fixed z-10 w-full flex justify-between items-center pt-1 px-4 bg-white shadow-md">
 			<div className="flex flex-col">
 				<span className="text-3xl font-bold text-[#7C4EE4]">Dashboard</span>
 				<span className="text-xs">Hi Jackson, Welcome back!</span>

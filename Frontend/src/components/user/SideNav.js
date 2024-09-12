@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IoGrid } from "react-icons/io5";
 import { MdOutlinePostAdd } from "react-icons/md";
 import { BsGearFill } from "react-icons/bs";
@@ -9,10 +10,10 @@ function SideNav() {
 	return (
 		<div className="fixed hidden md:flex md: flex-col r h-screen px-2 bg-[#7C4EE4] text-white text-center pt-10 space-y-10">
 			<span>Blog Post</span>
-			<button className="flex space-x-1 px-1 border rounded-lg  font-bold">
+			<Link to='/dashboard/new-post' className="flex space-x-1 px-1 border rounded-lg  font-bold">
 				<TbPlaylistAdd size={24} />
 				<span>New Post</span>
-			</button>
+			</Link>
 			<div className="flex flex-col items-center space-y-6">
 				<div className=" w-28 flex space-x-1">
 					<IoGrid size={24} />

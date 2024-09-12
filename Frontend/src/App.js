@@ -15,6 +15,8 @@ const ForgotPassword = lazy(() => import('./pages/Auth/ForgotPassword'));
 const CodeVerify = lazy(() => import('./pages/Auth/CodeVerify'));
 const SetPassword = lazy(() => import('./pages/Auth/SetPassword'));
 const Dashboard = lazy(() => import('./pages/user/Dashboard'));
+const BlogEditor = lazy(() => import('./pages/user/BlogEditor'));
+
 
 function App() {
   return (
@@ -31,7 +33,8 @@ function App() {
             <Route path='/forgotpassword' element={<ForgotPassword />} />
             <Route path='/code-verification' element={<CodeVerify />} />
             <Route path='/set-new-password' element={<SetPassword />} />
-            <Route path='/user/:userId' element={<Dashboard />} />
+            <Route path='/dashboard/:userId' element={<Dashboard />} />
+            <Route path='/dashboard/new-post' element={<BlogEditor />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
       </Suspense>
