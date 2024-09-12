@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { RiMenu5Fill } from "react-icons/ri";
 
-import PopMenu from "./PopMenu";
+import { PopMenu } from "./PopMenu";
 import { links } from "../utils/links";
 
 function NavBar() {
