@@ -14,8 +14,10 @@ function SideNav() {
 	}
 
 	return (
-		<div className="fixed hidden md:flex md: flex-col r h-screen px-2 bg-[#7C4EE4] text-white text-center pt-10 space-y-10">
-			<span>Blog Post</span>
+		<div className="fixed hidden  md:flex md: flex-col h-screen px-2 bg-[#7C4EE4] text-white text-center pt-10 space-y-10">
+			<div className="absolute top-0 left-0" >
+				<img src="/static/images/rsz_newblogpost1.png" className="h-16 px-2 pt-2"  alt="BLOG POST" />
+			</div>
 			<Link to='/dashboard/new-post' className="flex space-x-1 px-1 border rounded-lg  font-bold">
 				<TbPlaylistAdd size={24} />
 				<span>New Post</span>

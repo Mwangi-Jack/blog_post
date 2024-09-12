@@ -18,8 +18,8 @@ function NavBar() {
 	return (
 		<div className="fixed top-0 z-10 bg-white w-full">
 			<div className="flex justify-between shadow-md border-black py-1 px-10 items-center">
-				<div className="border">
-					<img src="/static/images/BlogPost4.png"  alt="Blog Post" className="w-8" />
+				<div className="">
+					<img src="/static/images/rsz_newblogpost.png" className="h-10 w-32"  alt="Blog Post"  />
 				</div>
 				<div className="hidden md:visible md:flex justify-between items-center w-1/3">
 					{links.map((link) => (

@@ -7,13 +7,13 @@ function Login() {
 	return (
 		<div className="mx-4">
 			<div className="flex justify-between md:mx-20 pt-4">
-				<img className="border-2 w-10" src="/static/images/BlogPost1.png" alt="Login" />
+			<img src="/static/images/rsz_newblogpost.png" className="hidden md:flex h-16 w-44"  alt="BlOG POST LOGO" />
 				<Link to='/' className="flex items-center space-x-2 text-[#7C4EE4]">
 					<HiHome size={25}/>
 					<span className="font-semibold mt-2">Home</span>
 				</Link>
 			</div>
-			<div className="mt-20 md:flex md:justify-between md:mx-10 md:mt-10 ">
+			<div className="mt-10 md:flex md:justify-between md:mx-10 md:mt-6 ">
 				<div className="md:w-1/2 space-y-6 md:px-28">
 						<div className="">
 							<h1 className="text-3xl font-bold">Sign up</h1>
