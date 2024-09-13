@@ -17,7 +17,7 @@ const SetPassword = lazy(() => import('./pages/Auth/SetPassword'));
 const Dashboard = lazy(() => import('./pages/user/Dashboard'));
 const BlogEditor = lazy(() => import('./pages/user/BlogEditor'));
 const UserPosts = lazy(() => import('./pages/user/UserPosts'));
-
+const Settings = lazy(() => import('./pages/user/Settings'));
 
 function App() {
   return (
@@ -37,6 +37,7 @@ function App() {
             <Route path='/dashboard/:userId' element={<Dashboard />} />
             <Route path='/dashboard/new-post' element={<BlogEditor />} />
             <Route path='/user-posts/:userId' element={<UserPosts />} />
+            <Route path='settings/:userId' element={<Settings />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
       </Suspense>

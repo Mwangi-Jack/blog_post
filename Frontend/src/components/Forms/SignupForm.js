@@ -12,7 +12,8 @@ function SignupForm() {
 		'email': '',
 		'phone': '',
 		'password': '',
-		'cpassword': ''
+		'cpassword': '',
+		'profile_url': ''
 	});
 
 	const handleChange = (e) => {
