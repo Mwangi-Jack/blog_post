@@ -9,7 +9,7 @@ function Settings() {
 
 	return (
 		<UserIndex>
-			<div className="flex flex-row mt-16 mx-4 pt-10 gap-16">
+			<div className="md:flex flex-row mt-16 mx-4 pt-10 gap-16">
 				<ProfilePreviewCard user={user} />
 				<ProfileEditForm />
 			</div>

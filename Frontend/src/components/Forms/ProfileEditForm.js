@@ -27,7 +27,7 @@ function ProfileEditForm() {
 	};
 
 	return (
-		<div className="rounded p-4 border-t shadow-lg basis-3/4">
+		<div className="mt-6 md:mt-0 rounded p-4 border-t shadow-lg basis-3/4">
 			<span className="text-2xl font-bold">Edit Profile</span>
 			<form onSubmit={handleSubmit} className='space-y-10 mt-10'>
 				<div>
