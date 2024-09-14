@@ -1,12 +1,17 @@
 import { useParams } from "react-router-dom";
-import { allPosts } from "../utils/Posts";
+import usePostsHook from "../hooks/usePostsHook";
 import NavBar from "../components/NavBar";
 import PopularPosts from "../components/PopularPosts";
 import Footer from "../components/Footer";
 
 function PostView() {
 	const { id } = useParams();
-	const post = allPosts.find((post) => post.id == id);
+	const { posts , isLoading } = usePostsHook();
+
+	const post = posts.find((post) => post.id === id);
+	if (isLoading) {
+		return <p>Loading...</p>
+	}
 
 	return (
 		<div>
