@@ -1,0 +1,244 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"Fname": "Jackson",
+			"Sname": "Mwangi",
+			"email": "jack@gmail.com",
+			"password": "12345",
+			"profile_url": "/static/images/profile.jpeg"
+		},
+		{
+			"id": 2,
+			"Fname": "Alice",
+			"Sname": "Mwangi",
+			"email": "alicek@gmail.com",
+			"password": "12345",
+			"profile_url": null
+		}
+	],
+
+	"posts": [
+		{
+			"id": 1,
+			"featured": false,
+			"popular": true,
+			"author_id": 1,
+			"views": 1200,
+			"tags": ["development", "techie", "software"],
+			"rating": 4,
+			"description": "trying my first blog",
+			"pic": "/static/images/travel2.png",
+			"category": "Travel",
+			"date": "13th March 2024",
+			"title": "Train Or Bus Journey? Which One Suits?",
+			"content": "The choice between a train or bus journey depends on various factors such as the distance of the journey, the time available, the cost, and person "
+		},
+		{
+			"id": 2,
+			"featured": false,
+			"popular": true,
+			"author_id": 1,
+			"views": 1200,
+			"tags": ["development", "techie", "software"],
+			"rating": 4,
+			"description": "trying my first blog",
+			"pic": "/static/images/development1.png",
+			"cateory": "Development",
+			"date": "11th March 2024",
+			"title": "Best Website To Research For Your Next Project",
+			"content": "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs "
+		},
+		{
+			"id": 3,
+			"featured": false,
+			"popular": true,
+			"author_id": 1,
+			"views": 1200,
+			"tags": ["development", "techie", "software"],
+			"rating": 4,
+			"description": "trying my first blog",
+			"pic": "/static/images/sports2.png",
+			"category": "Sports",
+			"date": "10th March 2024",
+			"title": "How to Be a Dancer in 2024 With Proper Skills",
+			"content": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive "
+		},
+		{
+			"id": 4,
+			"featured": false,
+			"popular": true,
+			"author_id": 1,
+			"views": 1200,
+			"tags": ["development", "techie", "software"],
+			"rating": 4,
+			"description": "trying my first blog",
+			"pic": "/static/images/travel3.png",
+			"category": "Travel",
+			"date": "13th March 2024",
+			"title": "Who is the Best Singer on Chart? Know him?",
+			"content": "chart by Billboard which ranks the all-time greatest artists based on their performance on the weekly Billboard Hot 100 and "
+		},
+		{
+			"id": 5,
+			"featured": false,
+			"popular": true,
+			"author_id": 1,
+			"views": 1200,
+			"tags": ["development", "techie", "software"],
+			"rating": 4,
+			"description": "trying my first blog",
+			"pic": "/static/images/development2.png",
+			"category": "Development",
+			"date": "11th March 2024",
+			"title": "How to Start Export Import Business From Home",
+			"content": "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs"
+		},
+		{
+			"id": 6,
+			"featured": false,
+			"popular": true,
+			"author_id": 1,
+			"views": 1200,
+			"tags": ["development", "techie", "software"],
+			"rating": 4,
+			"description": "trying my first blog",
+			"pic": "/static/images/sports3.png",
+			"category": "Sports",
+			"date": "10th March 2024",
+			"title": "Make Some Drinks Wich Chocolates and Milk",
+			"content": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive"
+		},
+		{
+			"id": 7,
+			"featured": false,
+			"popular": true,
+			"author_id": 1,
+			"views": 1200,
+			"tags": ["development", "techie", "software"],
+			"rating": 4,
+			"description": "trying my first blog",
+			"pic": "/static/images/travel1.png",
+			"category": "Travel",
+			"date": "13th March 2024",
+			"title": "8 Rules Of Travelling In Sea You Need To Know",
+			"content": "Travelling in sea has many advantages. Some of the advantages of transporting goods by sea include: you can ship large volumes at costs "
+		},
+		{
+			"id": 8,
+			"featured": false,
+			"popular": true,
+			"author_id": 1,
+			"views": 1200,
+			"tags": ["development", "techie", "software"],
+			"rating": 4,
+			"description": "trying my first blog",
+			"pic": "/static/images/development3.png",
+			"cateory": "Development",
+			"date": "11th March 2024",
+			"title": "How to Build strong portfolio and get a Job in UI/UX",
+			"content": "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from "
+		},
+		{
+			"id": 9,
+			"featured": false,
+			"popular": true,
+			"author_id": 1,
+			"views": 1200,
+			"tags": ["development", "techie", "software"],
+			"rating": 4,
+			"description": "trying my first blog",
+			"pic": "/static/images/sports1.png",
+			"category": "Sports",
+			"date": "10th March 2024",
+			"title": "How to Be a Professional Footballer in 2024",
+			"content": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive"
+		},
+		{
+			"id": 10,
+			"featured": false,
+			"popular": true,
+			"author_id": 1,
+			"views": 1200,
+			"tags": ["development", "techie", "software"],
+			"rating": 4,
+			"description": "trying my first blog",
+			"pic": "/static/images/featured.png",
+			"cateory": "Development",
+			"date": "11 th March 2024",
+			"title": "How to make a Game look more attractive with New VR & AI Technology",
+			"content": "Google has been investing in AI for many years and bringing its benefits to individuals, businesses and communities. Whether it’s publishing state-of-the-art research, building helpful products or developing tools and resources that enable others, we’re committed to making AI accessible to everyone.",
+			"quote": "People worry that computers will get too smart and take over the world, but the real problem is that they’re too stupid and they’ve already taken over the world.",
+			"quote_name": "Jack Mwangi",
+			"text_two": "More than 3 billion people already benefit from AI-powered features in Google Workspace, whether it’s using Smart Compose in Gmail or auto-generated summaries in Google Docs. Now, we’re excited to take the next step and bring a limited set of trusted testers a new set of features that makes the process of writing even easier. In Gmail and Google Docs, you can simply type in a topic you’d like to write about, and a draft will be instantly generated for you. So if you’re a manager onboarding a new employee, Workspace saves you the time and effort involved in writing that first welcome email. From there, you can elaborate upon or abbreviate the message or adjust the tone to be more playful or professional — all in just a few clicks. We’ll be rolling out these new experiences to testers in the coming weeks.",
+			"text_three": "We’re so excited by the potential of generative AI, and the opportunities it will unlock — from helping people express themselves creatively, to helping developers build brand new types of applications, to transforming how businesses and governments engage their customers and constituents. Stay tuned for more to come in the weeks and months ahead."
+
+		},
+		{
+			"id": 11,
+			"featured": true,
+			"popular": true,
+			"author_id": 1,
+			"views": 2000,
+			"tags": ["development", "techie", "software"],
+			"rating": 5,
+			"description": "trying my first blog",
+			"pic": "/static/images/featured.png",
+			"category": "Development",
+			"date": "16th March 2024",
+			"title": "How to make a Game look more attractive with New VR & AI Technology",
+			"content": "Google has been investing in AI for many years and bringing its benefits to individuals, businesses and communities. Whether it’s publishing state-of-the`everyone."
+		}
+	],
+
+	"statistics": [
+		{
+			"id": 1,
+			"userId": 1,
+			"overrall":
+				{
+					"total_views": 1200,
+					"total_posts": 22,
+					"total_reads": 600
+				},
+			"daily": [
+				{
+					"day": "Mon",
+					"date": "10th March 2024",
+					"views": 100
+				},
+				{
+					"day": "Tue",
+					"date": "11th March 2024",
+					"views": 100
+				},
+				{
+					"day": "Wed",
+					"date": "12th March 2024",
+					"views": 100
+				},
+				{
+					"day": "Thur",
+					"date": "13th March 2024",
+					"views": 50
+				},
+				{
+					"day": "Fri",
+					"date": "14th March 2024",
+					"views": 30
+				},
+				{
+					"day": "Sat",
+					"date": "15th March 2024",
+					"views": 45
+				},
+				{
+					"day": "Sun",
+					"date": "16th March 2024",
+					"views": 300
+				}
+			]
+		}
+	]
+}
+
