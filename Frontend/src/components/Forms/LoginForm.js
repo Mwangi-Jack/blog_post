@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FloatingLabelInput from "../UI/FloatingLabelInput";
 import AuthAccounts from "../UI/AuthAccounts";
+import useUserHook from "../../hooks/useUserHook";
 
 function LoginForm() {
 	const [ formData, setFormData ] = useState({
 		'email': '',
 		'password': '',
 	})
+	const { login } = useUserHook();
 
 	const handleChange = (e) => {
 		const {name, value} = e.target;
@@ -16,7 +18,7 @@ function LoginForm() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		login(formData);
 	}
 	return (
 		<div className="">

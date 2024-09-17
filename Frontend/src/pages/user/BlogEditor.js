@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
 import UserIndex from "./UserIndex";
 import NewBlogForm from '../../components/Forms/NewBlogForm';
+import usePostsHook from '../../hooks/usePostsHook';
+
 
 function BlogEditor() {
-	const [ content, setContent ] = useState('');
+	const { createPost } = usePostsHook();
+	const [ content , setContent ] = useState('')
 	const [formData, setFormData] = useState({
 		'title': '',
 		'category': '',
-		'slug': '',
-		'content': '',
+		'tags': '',
 		'banner_image': ''
 	})
 
+	const user = JSON.parse(localStorage.getItem('user'))
+
 	const handlePublish = (e) => {
 		e.preventDefault();
-		setFormData({...formData, 'content': content})
-		console.log(formData);
+		const blogForm = {
+			...formData, ...{'content': content, 'author_id': user._id}}
+		console.log(blogForm);
+		createPost(blogForm);
 	};
 
 	return (

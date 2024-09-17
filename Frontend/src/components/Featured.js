@@ -5,10 +5,10 @@ import usePostsHook from "../hooks/usePostsHook";
 function Featured() {
     const { posts, isLoading, error } = usePostsHook();
 
-	const featured = posts.find(post => post.id === '11');
+	const featured = posts.find(post => post._id === '66e594f0a229c1edca3e2b23');
 	console.log("FEATURED::::", featured);
 
-    if (isLoading || !featured.pic) {
+    if (featured === undefined ) {
         return (<p>Loading..!!.</p>);
     }
 

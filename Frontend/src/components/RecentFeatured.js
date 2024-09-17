@@ -5,11 +5,11 @@ function RecentFeatured() {
     const { posts, isLoading, error, getFeaturedPost } = usePostsHook();
 
 	// const featured = getFeaturedPost();
-	const featured = posts.find(post => post.id === '11');
-	console.log('RECENT FEATURED:::', posts)
+	const featured = posts.find(post => post._id === '66e594f0a229c1edca3e2b23');
+	console.log('RECENT FEATURED:::', featured)
 	// const featured = posts[10];
 
-    if (isLoading || !featured.pic ) {
+    if (featured === undefined ) {
         return <p>Loading...</p>;
     }
 	return (

@@ -11,13 +11,15 @@ function TopBar() {
 	const toggleDropDown = () => {
 		setIsopen(!isOpen);
 	}
+	const user = JSON.parse(localStorage.getItem('user'));
+
 	return (
 
 			<div className="fixed top-0 z-10 w-full">
 				<div className="flex justify-between items-center pt-1 px-4 bg-white shadow-md">
 					<div className="flex flex-col">
 						<span className="text-3xl font-bold text-[#7C4EE4]">Dashboard</span>
-						<span className="text-xs">Hi Jackson, Welcome back!</span>
+						<span className="text-xs">Hi, {user.Fname} Welcome back!</span>
 					</div>
 					<div className="flex space-x-8  items-center">
 						<div className="hidden md:flex">

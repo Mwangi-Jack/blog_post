@@ -31,6 +31,8 @@ export async function createPost(req, res) {
 	try {
 		const body = req.body;
 
+		console.log("BLOG TO CREATE:::", body)
+
 		const post = await Posts.create(body)
 
 		res.status(201).send(post);

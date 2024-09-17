@@ -17,7 +17,7 @@ function ProfilePreviewCard({user}) {
 				<span className="text-sm font-bold">{user.Fname}</span>
 				<span className="text-[10px]">{user.email}</span>
 			</div>
-			<div className="hidden md:grid border-t space-y-4 px-2 py-10 rounded shadow">
+			<div className="hidden md:grid border-t  px-2 pt-10  pb-4 rounded shadow">
 				<div className="space-y-4 ">
 					<span className="text-xl font-bold text-gray-500">Information</span>
 					<div>
@@ -26,7 +26,7 @@ function ProfilePreviewCard({user}) {
 						<p><span className="font-bold">Phone :</span> <span>{user.phone} </span></p>
 					</div>
 				</div>
-				<div className="space-y-4 ">
+				<div className="space-y-4 mt-6">
 					<span className="text-xl font-bold text-gray-500">Preferences</span>
 					<div>
 						<div className="flex space-x-3">
@@ -34,6 +34,10 @@ function ProfilePreviewCard({user}) {
 							<ThemeToggle />
 						</div>
 					</div>
+
+				</div>
+				<div className="flex justify-end mt-10">
+					<button className="border rounded-lg px-2 py-1 border-red-400 text-sm text-red-500">Delete Account</button>
 				</div>
 			</div>
 		</div>

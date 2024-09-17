@@ -1,7 +1,6 @@
 import Editor from "../user/Editor";
 
 function NewBlogForm({content, setContent, formData, setFormData, handleSubmit}) {
-
 	const handleChange = (e) => {
 		const {name, value} = e.target;
 		setFormData({...formData, [name]:value})
@@ -46,13 +45,13 @@ function NewBlogForm({content, setContent, formData, setFormData, handleSubmit})
 					/>
 				</div>
 				<div className="flex flex-col w-full space-y-1">
-					<label className='  text-gray-600' htmlFor="slug">Slug</label>
+					<label className='  text-gray-600' htmlFor="slug">Tags</label>
 					<input
-						value={formData.slug}
+						value={formData.tags}
 						onChange={(e) => handleChange(e)}
 						className="py-1 border rounded-sm px-2"
 						type="text"
-						name="slug"
+						name="tags"
 						placeholder="enter blog slug..."
 					/>
 				</div>

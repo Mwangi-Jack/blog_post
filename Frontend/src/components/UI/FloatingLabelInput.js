@@ -32,10 +32,10 @@ function FloatingLabelInput({ type='text', name, label, handleChange, value}){
                 type={ name === 'password' || name === 'cpassword' ? showPasswd[name] ? 'text' : 'password' : type }
                 name={name}
                 value={value}
-                required
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
+                required
                 >
                 </input>
                 <label

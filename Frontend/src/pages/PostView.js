@@ -8,7 +8,7 @@ function PostView() {
 	const { id } = useParams();
 	const { posts , isLoading } = usePostsHook();
 
-	const post = posts.find((post) => post.id === id);
+	const post = posts.find((post) => post._id === id);
 	if (isLoading) {
 		return <p>Loading...</p>
 	}

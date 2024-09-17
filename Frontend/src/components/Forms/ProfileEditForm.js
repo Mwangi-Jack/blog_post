@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 import FloatingLabelInput from '../UI/FloatingLabelInput';
+import useUserHook from '../../hooks/useUserHook';
 
-
-function ProfileEditForm() {
+function ProfileEditForm({ user }) {
 	const [ formData, setFormData] = useState({
-		'Fname': '',
-		'Sname': '',
-		'email': '',
-		'phone': ''
+		'Fname': user.Fname,
+		'Sname': user.Sname,
+		'email': user.email,
+		'phone': user.phone
 	})
+
+	const { userUpdate } = useUserHook();
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -23,7 +25,8 @@ function ProfileEditForm() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		console.log(formData, user._id);
+		userUpdate(user._id, formData);
 	};
 
 	return (
