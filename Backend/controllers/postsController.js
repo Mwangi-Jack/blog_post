@@ -43,15 +43,15 @@ export async function createPost(req, res) {
 
 export async function updatePost(req, res) {
 	try {
-		const {id, data } = req.body;
+		const data = req.body;
+		const { postId } = req.params;
+		const post = await Posts.findByIdAndUpdate(
+			postId,
+			{ $set: data },
+			{ new: true }
+		);
 
-		const result = await Posts.updateOne({id: id}, { $set: data });
-
-		if (!result.modifiedCount === 1) {
-			return res.status(404).json({message: 'Post Not Found'})
-		}
-
-		return res.status(200).json(data);
+		return res.status(200).json(post);
 
 	} catch(error) {
 		return res.status(500).json({message: 'An Internal Error Occured'})
@@ -61,17 +61,17 @@ export async function updatePost(req, res) {
 
 export async function deletePost(req, res) {
 	const { postId } = req.params;
-
+	console.log("POST ID TO DELETE:::", postId)
 	try {
-		const result = await Posts.deleteOne(postId);
+		const result = await Posts.deleteOne({ _id: postId});
 
-		if (!result.deletedCount === 1) {
+		if (result.deletedCount !== 1) {
 			return res.status(404).json({ message: 'Post Not Found' })
 		}
 
-		res.status(200).json({ message: "Post Deleted Successfully"})
+		return res.status(200).json({ message: "Post Deleted Successfully"})
 
 	} catch(err) {
-		res.status(500).json({ message: "An Internal Error Occured"})
+		return res.status(500).json({ message: "An Internal Error Occured"})
 	}
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { handleSuccess, handleFail } from '../components/UI/AlertHandler';
 
 
 // const BASE_URL = 'http://localhost:3001/api';
@@ -17,13 +18,13 @@ function useUserHook() {
 
 			console.log("LOGIN RESPONSE::",response.data);
 			setUser(response.data);
-			alert('login success')
+			handleSuccess("Login Succcess")
 			localStorage.setItem('user', JSON.stringify(response.data));
 			navigate(`/dashboard/${response.data._id}`);
 
 		} catch (error) {
-			console.log(error);
-			alert('login error')
+			console.log(error.response.data.message);
+			handleFail(error.response.data.message)
 		}
 	}
 
@@ -43,12 +44,12 @@ function useUserHook() {
 			setUser(response.data);
 			console.log("STRING:::", JSON.stringify(response.data))
 			localStorage.setItem('user', JSON.stringify(response.data));
-			alert('register success')
+			handleSuccess();
 			navigate(`dashboard/${user.id}`);
 
 		} catch(error) {
 			console.log(error);
-			alert('register error')
+			handleFail("Confirm Your Credentials")
 		}
 	}
 
@@ -63,10 +64,10 @@ function useUserHook() {
 
 			console.log("UPDATE RESPONSE", response.data);
 			localStorage.setItem('user', JSON.stringify(response.data));
-			alert('update success');
+			handleSuccess('Profile Updated Successfully');
 		} catch (err) {
 			console.log(err);
-			alert('update error');
+			handleFail(err.response.data.message, "Error");
 		}
 	}
 

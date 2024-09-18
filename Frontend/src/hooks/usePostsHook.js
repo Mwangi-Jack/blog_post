@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { handleConfirm, handleFail, handleSuccess } from '../components/UI/AlertHandler';
 
 // const BASE_URL = 'http://localhost:3001/api';
 const BASE_URL = 'https://blog-post-zhp3.vercel.app/api';
@@ -16,7 +17,6 @@ function getCurrentDateTime() {
 
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
-
 
 
 function usePostsHook() {
@@ -55,30 +55,65 @@ function usePostsHook() {
         return userposts;
     }
 
+    function getOnePost(postId) {
+        const post = posts.find(post => post._id === postId)
+        console.log(posts)
+        return post;
+    }
+
     async function createPost(blogForm) {
         const data = {
             ...blogForm,
             "created_at": getCurrentDateTime(),
         }
 
-        console.log("FULL FORM:::", data);
         try {
             const response = await axios.post(`${BASE_URL}/posts`, data)
             console.log(response);
             alert('post successfuly created');
+            handleSuccess('Post successfuly created', 'Success')
         } catch (err) {
-            alert('an error occured while creating post')
+            handleFail(err.response.data.message)
             console.log(err);
         }
     }
+
+    async function editPost(postId, blogform) {
+        console.log(postId, blogform);
+        try {
+            const response = await axios.put(`${BASE_URL}/posts/${postId}`, blogform);
+            console.log(response);
+            alert('post updated successfully')
+            handleSuccess('Post updated Successfully')
+        } catch(err) {
+            console.log('Error while edditing', err);
+            handleFail(err.message.data.message)
+        }
+    }
+
+    async function deletePost(postId) {
+        try {
+            const response = await axios.delete(`${BASE_URL}/posts/${postId}`);
+            console.log(response)
+            handleSuccess("Your post has been deleted.")
+        } catch(err) {
+            console.log(err);
+            handleFail(err.response.data.message);
+        }
+    }
+
+
 
     return {
 		posts,
 		isLoading,
 		error,
+        getOnePost,
 		getFeaturedPost,
         getUserPosts,
-        createPost
+        createPost,
+        editPost,
+        deletePost,
 	};
 }
 

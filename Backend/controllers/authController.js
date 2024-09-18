@@ -9,7 +9,7 @@ export async function login(req, res) {
 		const user  = await User.findOne(formData)
 
 		if (!user) {
-			return res.status(404).json({ message: 'User Not Found'})
+			return res.status(404).json({ message: 'Wrong Email or Password'})
 		}
 
 		return res.status(200).json(user);

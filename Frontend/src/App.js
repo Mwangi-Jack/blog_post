@@ -36,6 +36,7 @@ function App() {
             <Route path='/set-new-password' element={<SetPassword />} />
             <Route path='/dashboard/:userId' element={<Dashboard />} />
             <Route path='/dashboard/new-post' element={<BlogEditor />} />
+            <Route path='/dashboard/edit/:postId' element={<BlogEditor />} />
             <Route path='/user-posts/:userId' element={<UserPosts />} />
             <Route path='settings/:userId' element={<Settings />} />
             <Route path='*' element={<NotFound />} />
