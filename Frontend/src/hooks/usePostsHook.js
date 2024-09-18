@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { handleConfirm, handleFail, handleSuccess } from '../components/UI/AlertHandler';
+import { handleFail, handleSuccess } from '../components/UI/AlertHandler';
 
-// const BASE_URL = 'http://localhost:3001/api';
-const BASE_URL = 'https://blog-post-zhp3.vercel.app/api';
+const BASE_URL = 'http://localhost:3001/api';
+// const BASE_URL = 'https://blog-post-zhp3.vercel.app/api';
 
 function getCurrentDateTime() {
     const now = new Date();
