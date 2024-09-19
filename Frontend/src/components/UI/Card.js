@@ -45,7 +45,7 @@ function Card({ post, edit }) {
 
 	return (
 		<div className="my-10  h-90">
-			<img src={post.pic} alt={post.id} className="w-full" />
+			<img src={post.banner_url} alt={post.id} className="w-full" />
 			<div className="mt-4 space-y-2">
 				<div className="text-sm space-x-2">
 					<span className="font-bold">{post.category}</span>

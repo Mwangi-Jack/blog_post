@@ -9,7 +9,7 @@ const postsModel = new mongoose.Schema({
 	popular: { type: Boolean, default: false },
 	views: { type: Number, default: 1 },
 	rating: { type: Number, default: 1 },
-	pic: { type: String, default: null},
+	banner_url: { type: String, default: null},
 	category: { type: String, required: true },
 	content: { type: String, required: true },
 	created_at: { type: Date, required: true },

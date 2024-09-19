@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { v4 } from 'uuid';
 import UserIndex from "./UserIndex";
 import NewBlogForm from '../../components/Forms/NewBlogForm';
 import usePostsHook from '../../hooks/usePostsHook';
+import { imageDb } from '../../FirebaseStorage/config';
+import { handleFail } from '../../components/UI/AlertHandler';
 
 function BlogEditor() {
 	const { createPost, getOnePost, editPost } = usePostsHook();
 	const [content, setContent] = useState('');
+	const [ file, setFile ]  = useState({})
 	const [formData, setFormData] = useState({
 		'title': '',
 		'category': '',
 		'tags': '',
-		'banner_image': ''
+		'banner_url': ''
 	});
 	const [editData, setEditData] = useState({});
 
@@ -33,17 +38,43 @@ function BlogEditor() {
 
 	const user = JSON.parse(localStorage.getItem('user'));
 
-	const handlePublish = (e) => {
+	const handleFileUpload = async (file) => {
+		try {
+			const imageRef = ref(imageDb, `images/${v4()}`);
+
+			const fileType = Object.keys(file);
+
+			const fileToUpload = file[fileType];
+			console.log('File type to upload', fileType);
+			console.log('File to upload', fileToUpload);
+			const response = await uploadBytes(imageRef, fileToUpload);
+			console.log("FILE UPLOAD RESPONSE::", response);
+
+			return response;
+		} catch (error) {
+			handleFail("Error Uploading File")
+		}
+	}
+
+	const handlePublish = async (e) => {
 		e.preventDefault();
-		const blogForm = {
-			...formData,
-			...{
-				'content': content,
-				'author_id': user._id
-			}
-		};
-		createPost(blogForm);
+		const resp = await handleFileUpload(file);
+		console.log("file upload response",resp);
+
+		getDownloadURL(resp.ref).then(async (url) => {
+			formData['banner_url'] = url;
+			setFormData({...formData, 'banner_url': url})
+		})
+
+		setFormData({...formData, ...{
+			'content': content,
+			'author_id': user._id
+		}})
+
+		console.log("FULL FORM WITH IMAGE URL FROM FIREBASE::",formData)
+		createPost(formData)
 	};
+
 
 	const handleEdit = (e) => {
 		e.preventDefault();
@@ -74,17 +105,22 @@ function BlogEditor() {
 						<NewBlogForm
 							content={content}
 							setContent={setContent}
+							file={file}
+							setFile={setFile}
 							formData={editData}
 							setFormData={setEditData}
 							handleSubmit={handleEdit}
+
 						/>
 					) : (
 						<NewBlogForm
 							content={content}
 							setContent={setContent}
+							file={file}
+							setFile={setFile}
 							formData={formData}
 							setFormData={setFormData}
-							handleSubmit={handlePublish}
+							handleSubmit={handleEdit}
 						/>
 					)
 				}

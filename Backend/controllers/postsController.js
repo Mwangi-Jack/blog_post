@@ -31,12 +31,13 @@ export async function createPost(req, res) {
 	try {
 		const body = req.body;
 
-		console.log("BLOG TO CREATE:::", body)
+		// console.log("BLOG TO CREATE:::", body)
 
 		const post = await Posts.create(body)
 
 		res.status(201).send(post);
 	} catch (error) {
+		console.log(error);
 		return res.status(500).json({message: 'An Internal Error Occured'})
 	}
 }

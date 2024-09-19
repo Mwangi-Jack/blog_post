@@ -1,6 +1,13 @@
+import { useState } from 'react';
 import Editor from "../user/Editor";
 
-function NewBlogForm({content, setContent, formData, setFormData, handleSubmit}) {
+function NewBlogForm({
+	file, setFile, content,
+	setContent, formData,
+	setFormData,
+	handleSubmit
+}) {
+
 	const handleChange = (e) => {
 		const {name, value} = e.target;
 		setFormData({...formData, [name]:value})
@@ -22,8 +29,7 @@ function NewBlogForm({content, setContent, formData, setFormData, handleSubmit})
 				<div className="md:flex flex-col w-full space-y-1">
 					<lable className='text-gray-600' htmlFor="banner">Banner Image</lable>
 					<input
-						value={formData.banner_image}
-						onChange={(e) => handleChange(e)}
+						onChange={(e) => setFile({image: e.target.files[0]})}
 						className="border py-1 rounded-sm px-2"
 						type="file"
 						accept="image/*"

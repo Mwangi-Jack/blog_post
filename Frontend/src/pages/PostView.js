@@ -26,7 +26,7 @@ function PostView() {
 					<div className="text-4xl md:text-5xl font-bold">{post.title}</div>
 				</div>
 				<div className="space-y-4">
-					<img src={post.pic} alt={post.title} className="border w-full md:h-[25rem] rounded"/>
+					<img src={post.banner_url} alt={post.title} className="border w-full md:h-[25rem] rounded"/>
 					<div className="md:mx-20 space-y-4">
 						<div>{post.description}</div>
 						<div>{parse(post.content)}</div>
