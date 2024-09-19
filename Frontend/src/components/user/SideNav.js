@@ -20,7 +20,7 @@ function SideNav() {
 			</div>
 			<Link to='/dashboard/new-post' className="flex space-x-1 px-1 border rounded-lg  font-bold">
 				<TbPlaylistAdd size={24} />
-				<span>New Pos</span>
+				<span>New Post</span>
 			</Link>
 			<div className="flex flex-col items-center space-y-6">
 				<Link  to="/dashboard/12" className=" w-28 flex space-x-1">
