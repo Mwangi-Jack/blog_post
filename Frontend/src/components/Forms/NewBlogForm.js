@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useState  } from 'react';
+import PulseLoader from "react-spinners/PulseLoader";
 import Editor from "../user/Editor";
+import Prompter from '../../Gemini/Prompter';
+
 
 function NewBlogForm({
 	file, setFile, content,
@@ -8,62 +11,97 @@ function NewBlogForm({
 	handleSubmit
 }) {
 
+	let [loading, setLoading] = useState(false);
+
 	const handleChange = (e) => {
 		const {name, value} = e.target;
 		setFormData({...formData, [name]:value})
 	}
+	const handleGenerateText = async () =>{
+		if(formData.title === '') return alert('Enter Blog Title');
+		setLoading(true);
+		const AIcontent = await Prompter(formData.title);
+		setContent(AIcontent);
+		setLoading(false)
+	}
+
+
 
 	return (
 		<form onSubmit={handleSubmit} className="space-y-4 mx-3">
-			<div className="space-y-4 md:space-y-0 md:flex w-full justify-between md:space-x-16">
-				<div className="flex flex-col w-full space-y-1">
-					<label className='text-gray-600' htmlFor="title">Title</label>
-					<input
-						value={formData.title}
-						onChange={(e) => handleChange(e)}
-						className="py-1 border rounded px-2 "
-						name="title"
-						placeholder="write your blog title..."
-					/>
-				</div>
-				<div className="md:flex flex-col w-full space-y-1">
-					<lable className='text-gray-600' htmlFor="banner">Banner Image</lable>
-					<input
-						onChange={(e) => setFile({image: e.target.files[0]})}
-						className="border py-1 rounded-sm px-2"
-						type="file"
-						accept="image/*"
-						name="banner_image"
-						id="banner-image"
-					/>
-				</div>
-			</div>
-			<div className="space-y-4 md:space-y-0 md:flex w-full justify-between md:space-x-16">
-				<div className="flex flex-col w-full space-y-1">
-					<label className='  text-gray-600' htmlFor="category">Category</label>
-					<input
-						value={formData.category}
-						onChange={(e) => handleChange(e)}
-						className="py-1 border rounded-sm px-2"
-						type="text"
-						name="category"
-						placeholder="enter blog category..."
-					/>
-				</div>
-				<div className="flex flex-col w-full space-y-1">
-					<label className='  text-gray-600' htmlFor="slug">Tags</label>
-					<input
-						value={formData.tags}
-						onChange={(e) => handleChange(e)}
-						className="py-1 border rounded-sm px-2"
-						type="text"
-						name="tags"
-						placeholder="enter blog slug..."
-					/>
-				</div>
-			</div>
-			<Editor  content={content} setContent={setContent}/>
+			<div className='md:flex  md:space-x-5 '>
+				<div>
+					<div className='space-y-6 basis-1/4'>
+						<div className="flex flex-col w-full space-y-1">
+							<label className='text-gray-600' htmlFor="title">Title</label>
+							<input
+								value={formData.title}
+								onChange={(e) => handleChange(e)}
+								className="py-1 border rounded px-2 "
+								name="title"
+								placeholder="write your blog title..."
+							/>
+						</div>
+						<div className="md:flex flex-col w-full space-y-1">
+							<label className='text-gray-600' htmlFor="banner">Banner Image</label>
+							<input
+								onChange={(e) => setFile({image: e.target.files[0]})}
+								className="border py-1 rounded-sm px-2"
+								type="file"
+								accept="image/*"
+								name="banner_image"
+								id="banner-image"
+							/>
+						</div>
+						<div className="flex flex-col w-full space-y-1">
+							<label className='  text-gray-600' htmlFor="category">Category</label>
+							<input
+								value={formData.category}
+								onChange={(e) => handleChange(e)}
+								className="py-1 border rounded-sm px-2"
+								type="text"
+								name="category"
+								placeholder="enter blog category..."
+							/>
+						</div>
+						<div className="flex flex-col w-full space-y-1">
+							<label className='  text-gray-600' htmlFor="slug">Tags</label>
+							<input
+								value={formData.tags}
+								onChange={(e) => handleChange(e)}
+								className="py-1 border rounded-sm px-2"
+								type="text"
+								name="tags"
+								placeholder="enter blog slug..."
+							/>
+						</div>
+					</div>
 
+
+					<div className='space-y-5 flex justify-center mt-12'>
+						<span
+							onClick={handleGenerateText}
+							className="cursor-pointer px-4 w-[10rem] flex justify-center  border-[#7C4EE4] border  rounded-md hover:bg-gray-100"
+						>
+							{loading ?
+							(
+								<div className="sweet-loading">
+									<PulseLoader
+										color={"#7C4EE4"}
+										loading={loading}
+										size={10}
+										aria-label="Loading Spinner"
+										data-testid="loader"
+									/>
+								</div>
+							) : "Generate with AI"}
+						</span>
+					</div>
+				</div>
+				<div className='basis-3/4'>
+					<Editor  content={content} setContent={setContent}/>
+				</div>
+			</div>
 	  </form>
 	);
 }

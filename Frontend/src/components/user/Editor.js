@@ -40,7 +40,7 @@ function Editor({ content, setContent, handleChange }) {
           modules={modules}
           formats={formats}
           placeholder="Write your blog here..."
-          className="h-72"
+          className="h-[29rem] mt-6 md:mt-0"
         />
       </div>
     </div>

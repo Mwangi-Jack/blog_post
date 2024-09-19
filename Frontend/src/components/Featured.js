@@ -15,7 +15,7 @@ function Featured() {
 	return (
 		<div className="m-4">
 			<div className="rounded shadow-lg md:shadow-none px-2 py-4">
-				<img src={featured.pic} alt="Virtual Reality" />
+				<img src={featured.banner_url} alt="Virtual Reality" />
 				<div className="md:flex md:justify-end">
 					<div className="mt-2 md:border md:relative md:bottom-56 md:right-16 md:p-4 md:bg-white md:rounded md:w-1/2">
 						<div className="text-sm space-x-2">

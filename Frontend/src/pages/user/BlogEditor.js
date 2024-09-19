@@ -66,13 +66,11 @@ function BlogEditor() {
 			setFormData({...formData, 'banner_url': url})
 		})
 
-		setFormData({...formData, ...{
-			'content': content,
-			'author_id': user._id
-		}})
 
+		const blogForm = {...formData, ...{'content': content, 'author_id': user._id}}
+		console.log("INFOR TO ADD TO FORM DATA:::", blogForm);
 		console.log("FULL FORM WITH IMAGE URL FROM FIREBASE::",formData)
-		createPost(formData)
+		createPost(blogForm)
 	};
 
 
@@ -120,7 +118,7 @@ function BlogEditor() {
 							setFile={setFile}
 							formData={formData}
 							setFormData={setFormData}
-							handleSubmit={handleEdit}
+							handleSubmit={handlePublish}
 						/>
 					)
 				}
