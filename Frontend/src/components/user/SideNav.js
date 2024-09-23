@@ -23,15 +23,15 @@ function SideNav() {
 				<span>New Post</span>
 			</Link>
 			<div className="flex flex-col items-center space-y-6">
-				<Link  to="/dashboard/12" className=" w-28 flex space-x-1">
+				<Link  to="/dashboard" className=" w-28 flex space-x-1">
 					<IoGrid size={24} />
 					<span className="text- font-bold">Dashboard</span>
 				</Link>
-				<Link to="/user-posts/12" className=" w-28 flex space-x-1">
+				<Link to="/dashboard/user-posts" className=" w-28 flex space-x-1">
 					<MdOutlinePostAdd size={24} />
 					<span className="text- font-bold">My Posts</span>
 				</Link>
-				<Link to="/settings/12" className=" w-28 flex space-x-1">
+				<Link to="/dashboard/settings/" className=" w-28 flex space-x-1">
 					<BsGearFill size={24} />
 					<span className="text- font-bold">Settings</span>
 				</Link>

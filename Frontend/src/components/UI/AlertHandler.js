@@ -38,3 +38,11 @@ export const handleFail = (text) => {
 		text: text,
 	  });
 }
+
+export const handleInfor = (text) => {
+	Swal.fire({
+		title: "Info",
+		text: text,
+		icon: "info"
+	  });
+}

@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { handleSuccess, handleFail } from '../components/UI/AlertHandler';
+import { useAuth } from '../contexts/AuthContext';
 
 
-// const BASE_URL = 'http://localhost:3001/api';
-const BASE_URL = 'https://blog-post-zhp3.vercel.app/api'
+const BASE_URL = 'http://localhost:3001/api';
+// const BASE_URL = 'https://blog-post-zhp3.vercel.app/api'
 
 
 function useUserHook() {
 	const [ user, setUser ] = useState({});
 	const navigate = useNavigate();
+	const { setIsAuthenticated } = useAuth();
 
 	async function login(userData) {
 		try {
@@ -20,6 +22,7 @@ function useUserHook() {
 			setUser(response.data);
 			handleSuccess("Login Succcess")
 			localStorage.setItem('user', JSON.stringify(response.data));
+			setIsAuthenticated(true);
 			navigate(`/dashboard/${response.data._id}`);
 
 		} catch (error) {
@@ -45,6 +48,7 @@ function useUserHook() {
 			console.log("STRING:::", JSON.stringify(response.data))
 			localStorage.setItem('user', JSON.stringify(response.data));
 			handleSuccess();
+			setIsAuthenticated(true);
 			navigate(`dashboard/${user.id}`);
 
 		} catch(error) {

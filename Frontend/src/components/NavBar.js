@@ -5,11 +5,14 @@ import { RiMenu5Fill } from "react-icons/ri";
 
 import { PopMenu } from "./PopMenu";
 import { links } from "../utils/links";
+import { useAuth } from "../contexts/AuthContext";
 
 function NavBar() {
 	const [open, setIsopen] = useState(false);
 
 	const location = useLocation();
+
+	const { isAuthenticated } = useAuth();
 
 	const toggleMenu = () => {
 		setIsopen(!open);
@@ -29,7 +32,13 @@ function NavBar() {
 							>{link.name}</a>
 					))}
 					<FiSearch size={24} className="cursor-pointer" />
-					<Link className="border px-4 py-1 bg-[#7C4EE4] text-white rounded" to='/signup'>Register</Link>
+					{
+						isAuthenticated ?
+						 <Link className="border px-4 py-1 bg-[#7C4EE4] text-white rounded" to='/dashboard/new-post'>Publish New</Link>
+						:
+						 <Link className="border px-4 py-1 bg-[#7C4EE4] text-white rounded" to='/signup'>Register</Link>
+					}
+
 				</div>
 				<div className="md:hidden">
 					<RiMenu5Fill onClick={toggleMenu} size={25} />

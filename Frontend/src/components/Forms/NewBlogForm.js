@@ -2,6 +2,7 @@ import { useState  } from 'react';
 import PulseLoader from "react-spinners/PulseLoader";
 import Editor from "../user/Editor";
 import Prompter from '../../Gemini/Prompter';
+import { handleInfor } from '../UI/AlertHandler';
 
 
 function NewBlogForm({
@@ -18,7 +19,7 @@ function NewBlogForm({
 		setFormData({...formData, [name]:value})
 	}
 	const handleGenerateText = async () =>{
-		if(formData.title === '') return alert('Enter Blog Title');
+		if(formData.title === '') return handleInfor('Enter Blog Title');
 		setLoading(true);
 		const AIcontent = await Prompter(formData.title);
 		setContent(AIcontent);

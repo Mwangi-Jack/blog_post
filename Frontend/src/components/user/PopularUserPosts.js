@@ -10,6 +10,7 @@ function PopularUserPostsView() {
 	const userposts = posts.filter(post => post.author_id === user._id);
 
 	const userpopularposts = userposts.filter(post => post.popular === true)
+	console.log("user Popular posts:::",userpopularposts)
 
 	return (
 		<div className="my-16 mx-4">
