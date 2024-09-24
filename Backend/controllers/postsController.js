@@ -37,8 +37,8 @@ export async function createPost(req, res) {
 
 		res.status(201).send(post);
 	} catch (error) {
-		console.log(error);
-		return res.status(500).json({message: 'An Internal Error Occured'})
+		console.log(error.message);
+		return res.status(500).json({message: error.message})
 	}
 }
 
