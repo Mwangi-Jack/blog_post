@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { handleFail, handleSuccess } from '../components/UI/AlertHandler';
 
-const BASE_URL = 'http://localhost:3001/api';
-// const BASE_URL = 'https://blog-post-zhp3.vercel.app/api';
+// const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = 'https://blog-post-zhp3.vercel.app/api';
 
 function getCurrentDateTime() {
     const now = new Date();
@@ -70,7 +70,6 @@ function usePostsHook() {
         try {
             const response = await axios.post(`${BASE_URL}/posts`, data)
             console.log(response);
-            alert('post successfuly created');
             handleSuccess('Post successfuly created', 'Success')
         } catch (err) {
             handleFail(err.response.data.message)
