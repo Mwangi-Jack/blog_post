@@ -4,6 +4,7 @@ import { MdOutlinePostAdd } from "react-icons/md";
 import { BsGearFill } from "react-icons/bs";
 import { IoLogOutOutline } from "react-icons/io5";
 import { TbPlaylistAdd } from "react-icons/tb";
+import { IoBookmark } from "react-icons/io5";
 
 
 function SideNav() {
@@ -30,6 +31,10 @@ function SideNav() {
 				<Link to="/dashboard/user-posts" className=" w-28 flex space-x-1">
 					<MdOutlinePostAdd size={24} />
 					<span className="text- font-bold">My Posts</span>
+				</Link>
+				<Link to="/dashboard/saved-posts" className=" w-28 flex space-x-1">
+					<IoBookmark size={24} />
+					<span className="text- font-bold">Saved</span>
 				</Link>
 				<Link to="/dashboard/settings/" className=" w-28 flex space-x-1">
 					<BsGearFill size={24} />

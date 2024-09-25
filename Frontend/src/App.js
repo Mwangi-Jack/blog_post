@@ -21,6 +21,7 @@ const Dashboard = lazy(() => import('./pages/user/Dashboard'));
 const BlogEditor = lazy(() => import('./pages/user/BlogEditor'));
 const UserPosts = lazy(() => import('./pages/user/UserPosts'));
 const Settings = lazy(() => import('./pages/user/Settings'));
+const SavedPosts = lazy(()=> import('./pages/user/SavedPosts'));
 
 
 
@@ -45,6 +46,7 @@ function App() {
               <Route path='/dashboard/new-post/' element={<PrivateRoutes> <BlogEditor /> </PrivateRoutes>} />
               <Route path='/dashboard/edit/:postId/' element={<PrivateRoutes> <BlogEditor /></PrivateRoutes>} />
               <Route path='/dashboard/user-posts/' element={<PrivateRoutes> <UserPosts /> </PrivateRoutes>} />
+              <Route path='/dashboard/saved-posts/' element={<PrivateRoutes> <SavedPosts /> </PrivateRoutes>} />
               <Route path='/dashboard/settings/' element={<PrivateRoutes> <Settings /> </PrivateRoutes>} />
               <Route path='*' element={<NotFound />} />
           </Routes>

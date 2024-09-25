@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { handleSuccess, handleFail } from '../components/UI/AlertHandler';
+import { handleSuccess, handleFail, handleInfor } from '../components/UI/AlertHandler';
 import { useAuth } from '../contexts/AuthContext';
 
 
-// const BASE_URL = 'http://localhost:3001/api';
-const BASE_URL = 'https://blog-post-zhp3.vercel.app/api'
+const BASE_URL = 'http://localhost:3001/api';
+// const BASE_URL = 'https://blog-post-zhp3.vercel.app/api'
 
 
 function useUserHook() {
 	const [ user, setUser ] = useState({});
+	const [ userLoading , setuserLoading] = useState(true);
 	const navigate = useNavigate();
 	const { setIsAuthenticated } = useAuth();
 
@@ -71,11 +72,45 @@ function useUserHook() {
 			handleSuccess('Profile Updated Successfully');
 		} catch (err) {
 			console.log(err);
-			handleFail(err.response.data.message, "Error");
+			handleFail(err.response.data.message);
 		}
 	}
 
-	return { login, register, userUpdate }
+	async function savePost(postId) {
+		const user = JSON.parse(localStorage.getItem('user'));
+		if (!user) return handleInfor("Create Account Or Loggin to Save Post")
+
+		console.log("USER:::", user);
+		if(user.saved.includes(postId)) {
+			console.log('Unsaving...')
+			user.saved = user.saved.filter(id => id !== postId)
+		} else {
+			console.log('Saving....')
+			user.saved.push(postId);
+		}
+
+		localStorage.setItem('user', JSON.stringify(user));
+		try {
+			const response = await axios.put(`${BASE_URL}/users/${user._id}`, user)
+			console.log("SAVE RESPONSE::", response.data);
+			handleSuccess('Post Saved Successfully');
+		} catch (err) {
+			console.log('Error Saving Post', err);
+			handleFail(err.response.data)
+		}
+	}
+
+	async function getUser(userId) {
+		try {
+			const response = await axios.get(`${BASE_URL}/users/${userId}`);
+			return response.data
+		} catch (err) {
+			console.log(err)
+			return 'err'
+		}
+	}
+
+	return { login, register, userUpdate, savePost, getUser, userLoading }
 }
 
 

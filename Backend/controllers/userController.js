@@ -11,6 +11,24 @@ export async function getUsers(req, res) {
 		res.status(500).json({ message: "An Internal Error Occured"})
 	}
 }
+
+export function getUser(req, res) {
+	const { userId } = req.params;
+	User.findById(userId)
+	.then( user => {
+		return res.status(200).json(user)
+	}).catch((err) => {
+		res.status(500).json({ message: "An Internal Error Occured"})
+	})
+
+	// try {
+	// 	const user = User.findById(userId);
+	// 	return res.status(200).json(user);
+	// } catch (error) {
+	// 	res.status(500).json({ message: "An Internal Error Occured"});
+	// }
+}
+
 export async function createUser(req, res) {
 	try {
 		const { formData }  = req.body;
@@ -32,7 +50,6 @@ export async function updateUser(req, res) {
 			{ $set: formData },
 			{ new: true }
 		);
-
 		return res.status(200).json(user)
 	} catch(err) {
 		return res.status(500).json({ message: "An Internal Error Occured"})
