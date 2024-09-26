@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { handleFail, handleSuccess } from '../components/UI/AlertHandler';
 
-const BASE_URL = 'http://localhost:3001/api';
-// const BASE_URL = 'https://blog-post-zhp3.vercel.app/api';
+// const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = 'https://blog-post-zhp3.vercel.app/api';
 
 function getCurrentDateTime() {
     const now = new Date();
@@ -21,15 +21,21 @@ function getCurrentDateTime() {
 
 function usePostsHook() {
     const [posts, setPosts] = useState([]);
+    const [ currentPage, setCurrentPage ] = useState(1);
+    const [ totalPages, setTotalPages ] = useState(0);
+    const [ limit, setLimit ] = useState(8);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
         async function getPosts() {
             try {
-                const response = await axios.get(`${BASE_URL}/posts`);
-                console.log('Response:', response.data);
-                setPosts(response.data);
+                console.log(`${BASE_URL}/posts?page=${currentPage}&limit=${limit}`)
+                const response = await axios.get(`${BASE_URL}/posts?page=${currentPage}&limit=${limit}`);
+                console.log('Response:', response.data.posts);
+                setCurrentPage(response.data.currentPage);
+                setTotalPages(response.data.totalPages);
+                setPosts(response.data.posts);
             } catch (err) {
                 console.error('Error fetching posts:', err);
                 setError(err.message || 'Unknown error');
@@ -39,7 +45,7 @@ function usePostsHook() {
         }
 
         getPosts();
-    }, []);
+    }, [currentPage, limit]);
 
 	function getFeaturedPost() {
 
@@ -54,12 +60,6 @@ function usePostsHook() {
         const userposts = posts.filter(post => post.author_id === userId )
         return userposts;
     }
-
-    // function getOnePost(postId) {
-    //     const post = posts.find(post => post._id === postId)
-    //     console.log(posts)
-    //     return post;
-    // }
 
     async function getOnePost(postId) {
         let res;
@@ -121,12 +121,16 @@ function usePostsHook() {
 		posts,
 		isLoading,
 		error,
+        currentPage,
+        totalPages,
         getOnePost,
 		getFeaturedPost,
         getUserPosts,
         createPost,
         editPost,
         deletePost,
+        setCurrentPage,
+        setLimit
 	};
 }
 

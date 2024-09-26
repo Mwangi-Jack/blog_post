@@ -2,9 +2,12 @@ import usePostsHook from "../hooks/usePostsHook";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import Card from "../components/UI/Card";
+import { LuArrowLeftFromLine } from "react-icons/lu";
+import { LuArrowRightFromLine } from "react-icons/lu";
+import PageControls from "../components/UI/PageControls";
 
 function BlogsPage() {
-	const { posts, isLoading } = usePostsHook();
+	const { posts, isLoading, currentPage, setCurrentPage, totalPages } = usePostsHook();
 
 	if (isLoading) {
 		return <p>Loading...</p>
@@ -25,9 +28,10 @@ function BlogsPage() {
 					</p>
 				</div>
 				<div className="mx-4 my-10 md:grid md:grid-cols-4 md:gap-16">
-					{posts.map((post)=> <Card post={post} />)}
+					{posts.map((post)=> <Card post={post} key={post._id}/>)}
 				</div>
 			</div>
+			<PageControls currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
 
 			<Footer />
 		</div>

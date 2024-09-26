@@ -21,13 +21,13 @@ function Footer() {
 					<img src="/static/images/BlogPost1" alt="BLOG POST LOGO" />
 				</div>
 				<div className="space-x-4">
-					{links.map((link) => (
-						<a href={link.path} >{link.name}</a>
+					{links.map((link, index) => (
+						<a key={index} href={link.path} >{link.name}</a>
 					))}
 				</div>
 				<div className="flex justify-center space-x-4 text-[#7C4EE4]">
-					{socials.map((social) => (
-						<span>{social.icon}</span>
+					{socials.map((social, index) => (
+						<span key={index}>{social.icon}</span>
 					))}
 				</div>
 				<div className="font-mono space-y-10">

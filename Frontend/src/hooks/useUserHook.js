@@ -5,8 +5,8 @@ import { handleSuccess, handleFail, handleInfor } from '../components/UI/AlertHa
 import { useAuth } from '../contexts/AuthContext';
 
 
-const BASE_URL = 'http://localhost:3001/api';
-// const BASE_URL = 'https://blog-post-zhp3.vercel.app/api'
+// const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = 'https://blog-post-zhp3.vercel.app/api'
 
 
 function useUserHook() {

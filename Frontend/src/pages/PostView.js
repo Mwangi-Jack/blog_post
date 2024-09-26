@@ -7,8 +7,7 @@ import { BiSolidLike } from "react-icons/bi";
 import { BiCommentAdd } from "react-icons/bi";
 import { IoBookmark } from "react-icons/io5";
 import { IoBookmarkOutline } from "react-icons/io5";
-import { LuArrowLeftFromLine } from "react-icons/lu";
-import { LuArrowRightFromLine } from "react-icons/lu";
+import PageControls from "../components/UI/PageControls";
 import { FaShare } from "react-icons/fa6";
 import usePostsHook from "../hooks/usePostsHook";
 import useUserHook from "../hooks/useUserHook";
@@ -66,7 +65,7 @@ function PostView() {
 				<div className="pl-2 flex md:pl-36 space-x-3">
 					{
 						postOnView.author.profile_url ?
-						<img src='/static/images/photo.jpeg' alt={postOnView.author.Fname} />
+						<img src="/static/images/photo.jpeg"className="h-10 rounded-[50%]" alt={postOnView.author.Fname} />
 						:
 						<img src='/static/images/no-profile.png' className="h-8 rounded-full" alt={postOnView.author.Fname} />
 					}
@@ -122,16 +121,8 @@ function PostView() {
 					</div>
 				</div>
 			</div>
-			<div className="flex justify-between mx-32 py-10">
-				<div  className=" cursor-pointer flex flex-col items-center">
-					<LuArrowLeftFromLine data-tooltip-id="previous" data-tooltip-content="Previous"  size={24} color="#7C4EE4"/>
-					<Tooltip id="previous" place="top" style={{ backgroundColor: 'black', color: 'white' }} />
-				</div>
-				<div  className=" cursor-pointer flex flex-col items-center">
-					<LuArrowRightFromLine data-tooltip-id="next" data-tooltip-content="Next"  size={24} color="#7C4EE4"/>
-					<Tooltip id="next" place="top" style={{ backgroundColor: 'black', color: 'white' }} />
-				</div>
-			</div>
+			<PageControls />
+
 			<div className="px-4 ">
 				<h1 className="text-2xl">More Posts from {postOnView.author.Fname} </h1>
 				<div className="md:grid md:grid-cols-4 md:gap-10">
