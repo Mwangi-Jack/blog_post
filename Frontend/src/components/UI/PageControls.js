@@ -23,7 +23,7 @@ function PageControls({ currentPage, setCurrentPage, totalPages }) {
         <p>Previous</p>
       </div>
       <div
-        className={`cursor-pointer flex items-center space-x-2 ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`cursor-pointer md:flex items-center space-x-2 ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
         onClick={handleNext}
       >
         <p>Next</p>

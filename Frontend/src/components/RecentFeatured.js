@@ -1,15 +1,31 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import usePostsHook from "../hooks/usePostsHook";
 import Button from "./UI/Button"
 
+// const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = 'https://blog-post-zhp3.vercel.app/api';
+
+
 function RecentFeatured() {
-    const { posts, isLoading, error, getFeaturedPost } = usePostsHook();
+	const [ featured, setFeatured ] = useState({});
+	const [ loading, setLoading ] = useState(true);
 
-	// const featured = getFeaturedPost();
-	const featured = posts.find(post => post._id === '66e594f0a229c1edca3e2b23');
-	console.log('RECENT FEATURED:::', featured)
-	// const featured = posts[10];
+	useEffect(() => {
+		async function fetchFeatured() {
+			try {
+				const response = await axios.get(`${BASE_URL}/posts/66e594f0a229c1edca3e2b23`);
+				console.log("Featured post:::",response.data);
+				setFeatured(response.data);
+				setLoading(false);
+			} catch( err ) {
+				console.log('Error while fetching featured post', err)
+			}
+		}
+	fetchFeatured();
+	}, []);
 
-    if (featured === undefined ) {
+    if (loading ) {
         return <p>Loading...</p>;
     }
 	return (
