@@ -2,9 +2,15 @@ import mongoose from "mongoose";
 import Posts from "../models/postsModel.js";
 
 export async function getAllPosts(req, res) {
-	try {
-		const posts = await Posts.find();
-		res.status(200).json(posts);
+	const { page = 1, limit = 8 } = req.query;
+ 	try {
+		const posts = await Posts.find()
+		.limit(limit * 1)
+		.skip((page - 1)  * limit)
+		.exec();
+		const count = await Posts.countDocuments();
+
+		res.status(200).json({ posts, totalPages: Math.ceil(count / limit), currentPage: page });
 
 	} catch(error) {
 		return res.status(500).json({ message: 'Server error', error });
