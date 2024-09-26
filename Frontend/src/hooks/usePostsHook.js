@@ -55,11 +55,26 @@ function usePostsHook() {
         return userposts;
     }
 
-    function getOnePost(postId) {
-        const post = posts.find(post => post._id === postId)
-        console.log(posts)
-        return post;
+    // function getOnePost(postId) {
+    //     const post = posts.find(post => post._id === postId)
+    //     console.log(posts)
+    //     return post;
+    // }
+
+    async function getOnePost(postId) {
+        let res;
+        try {
+            const response = await axios.get(`${BASE_URL}/posts/${postId}`);
+            console.log("ONE POST:::", response.data);
+            res = response.data;
+        } catch (error) {
+            console.log('Error');
+            res = error.message
+        }
+
+        return res;
     }
+
 
     async function createPost(blogForm) {
         const data = {
@@ -100,7 +115,6 @@ function usePostsHook() {
             handleFail(err.response.data.message);
         }
     }
-
 
 
     return {

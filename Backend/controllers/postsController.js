@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Posts from "../models/postsModel.js";
 
 export async function getAllPosts(req, res) {
@@ -12,18 +13,50 @@ export async function getAllPosts(req, res) {
 
 export async function getPost(req, res) {
 	const { postId } = req.params;
-	console.log(postId)
 	try {
-		const post = await Posts.findById(postId)
+		const postWithAuthor = await Posts.aggregate([
+			{
+				$match: {_id: new mongoose.Types.ObjectId(postId)}
+			},
+			{
+				$lookup: {
+					from: 'users',
+					localField: 'author_id',
+					foreignField: '_id',
+					as: 'author'
+				}
+			},
+			{
+				$unwind: '$author'
+			},
+			{
+				$project: {
+					author_id: 1,
+					tags: 1,
+					title: 1,
+					description: 1,
+					featured: 1,
+					popular: 1,
+					views: 1,
+					rating: 1,
+					banner_url: 1,
+					category: 1,
+					content: 1,
+					created_at: 1,
+					'author.Fname': 1,
+					'author.Sname': 1,
+					'author.profile_url': 1
+				}
+			}
+		]);
 
-		if (!post) {
-			return res.status(404).json({message: 'Post Not Found'})
+		if (!postWithAuthor || postWithAuthor.length === 0) {
+			return res.status(404).json({ message: 'Post Not Found'})
 		}
 
-		res.status(200).json(post)
-
+		return res.status(200).json(postWithAuthor[0])
 	} catch(err) {
-		return res.status(500).json({message: `An Internal error Occured ${err}`})
+		console.log(err)
 	}
 }
 

@@ -13,39 +13,39 @@ import { FaShare } from "react-icons/fa6";
 import usePostsHook from "../hooks/usePostsHook";
 import useUserHook from "../hooks/useUserHook";
 import NavBar from "../components/NavBar";
-import PopularPosts from "../components/PopularPosts";
 import Footer from "../components/Footer";
-import axios from "axios";
-import { handleFail } from "../components/UI/AlertHandler";
 import countTimeFrom from "../utils/countTimeFrom";
 import Card from "../components/UI/Card";
 
 
 function PostView() {
 	const { id } = useParams();
-	const { posts , isLoading } = usePostsHook();
+	const { posts, isLoading, getOnePost } = usePostsHook();
 	const user = JSON.parse(localStorage.getItem('user'));
-	const postonView = posts.find((post) => post._id === id);
-	const authorPosts = posts.filter(post => post.author_id === postonView.author_id)
 
 	const [ isLike, setIsLike ] = useState(false);
 	const [ isSaved, setIsSaved ] = useState(user.saved.includes(id));
-	const [ author, setAuthor ] = useState({})
+	const [ postOnView, setPostOnView ] = useState({});
 
-	const { savePost, getUser } = useUserHook();
+	const { savePost } = useUserHook();
 
+
+	// console.log("ONE POST:::", getOnePost(id))
 
 	useEffect(() => {
-		 async function fetchAuthor(){
-			const resp = await getUser(postonView.author_id)
-			setAuthor(resp);
+		const fetchPost = async () => {
+			const post = await getOnePost(id);
+			setPostOnView(post);
 		}
-		fetchAuthor();
-	}, []);
+
+		fetchPost();
+	},[id])
 
 	if ( isLoading ) {
 		return <p>Loading...</p>
 	}
+
+	const authorPosts = posts.filter(post => post.author_id === postOnView.author_id)
 
 	const toggleLike = () => {
 		setIsLike(!isLike);
@@ -53,7 +53,7 @@ function PostView() {
 
 	const handlePostSave = () => {
 		setIsSaved(!isSaved);
-		 savePost(postonView._id);
+		 savePost(postOnView._id);
 	}
 
 	return (
@@ -61,29 +61,29 @@ function PostView() {
 			<NavBar />
 			<div className="m-4 mt-16 space-y-4">
 				<div className="md:px-28 flex justify-center">
-					<h1 className="text-3xl md:text-6xl font-raleway font-extrabold">{postonView.title}</h1>
+					<h1 className="text-3xl md:text-6xl font-raleway font-extrabold">{postOnView.title}</h1>
 				</div>
 				<div className="pl-2 flex md:pl-36 space-x-3">
 					{
-						author.profile_url ?
-						<img src='/static/images/photo.jpeg' alt={author.Fname} />
+						postOnView.author.profile_url ?
+						<img src='/static/images/photo.jpeg' alt={postOnView.author.Fname} />
 						:
-						<img src='/static/images/no-profile.png' className="h-8 rounded-full" alt={author.Fname} />
+						<img src='/static/images/no-profile.png' className="h-8 rounded-full" alt={postOnView.author.Fname} />
 					}
 					<div className="">
-						<p className="text-sm">{author.Fname } { author.Sname }</p>
+						<p className="text-sm">{postOnView.author.Fname ? `${postOnView.author.Fname} ${postOnView.author.Sname}`: 'loading' }</p>
 						<div className="space-x-2 text-xs">
 							<span>4 Min Read</span>
-							<span>{countTimeFrom(postonView.created_at)}</span>
+							<span>{countTimeFrom(postOnView.created_at)}</span>
 						</div>
 					</div>
 				</div>
 				<div className="space-y-4">
 					<div className="flex justify-center">
-						<img src={postonView.banner_url} alt={postonView.title} className="w-11/12 md:w-2/3 md:h-[25rem] rounded"/>
+						<img src={postOnView.banner_url} alt={postOnView.title} className="w-11/12 md:w-2/3 md:h-[25rem] rounded"/>
 					</div>
 					<div className="md:mx-36">
-						{parse(postonView.content)}
+						{parse(postOnView.content)}
 					</div>
 				</div>
 				<div className="flex justify-center py-10">
@@ -133,7 +133,7 @@ function PostView() {
 				</div>
 			</div>
 			<div className="px-4 ">
-				<h1 className="text-2xl">More Posts from {author.Fname} </h1>
+				<h1 className="text-2xl">More Posts from {postOnView.author.Fname} </h1>
 				<div className="md:grid md:grid-cols-4 md:gap-10">
 					{
 						authorPosts.map((post) => <Card post={post}  />)
