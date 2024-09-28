@@ -5,13 +5,10 @@ import Card from "../components/UI/Card";
 import { LuArrowLeftFromLine } from "react-icons/lu";
 import { LuArrowRightFromLine } from "react-icons/lu";
 import PageControls from "../components/UI/PageControls";
+import Loading from "../components/Loading";
 
 function BlogsPage() {
 	const { posts, isLoading, currentPage, setCurrentPage, totalPages } = usePostsHook();
-
-	if (isLoading) {
-		return <p>Loading...</p>
-	}
 
 	return (
 		<div className="mt-20">
@@ -27,12 +24,16 @@ function BlogsPage() {
 						them all along
 					</p>
 				</div>
-				<div className="mx-4 my-10 md:grid md:grid-cols-4 md:gap-16">
-					{posts.map((post)=> <Card post={post} key={post._id}/>)}
+				<div>
+					{
+						isLoading ? <Loading /> :
+						<div className="mx-4 my-10 md:grid md:grid-cols-4 md:gap-12">
+							{posts.map((post)=> <Card post={post} key={post._id}/>)}
+						</div>
+					}
 				</div>
 			</div>
 			<PageControls currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
-
 			<Footer />
 		</div>
 	)

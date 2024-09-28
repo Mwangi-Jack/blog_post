@@ -17,8 +17,9 @@ function Footer() {
 				</p>
 			</div>
 			<div className="text-center mt-4 space-y-4 mb-2">
-				<div>
-					<img src="/static/images/BlogPost1" alt="BLOG POST LOGO" />
+				<div className="border flex flex-col justify-center">
+					<img src="/static/images/rsz_1newblogpost.png" className="w-56 h-56 border relative bottom-20" alt="BLOG POST LOGO" />
+					hello world
 				</div>
 				<div className="space-x-4">
 					{links.map((link, index) => (

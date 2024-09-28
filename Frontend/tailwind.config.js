@@ -7,7 +7,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
-        raleway: ['Raleway', 'sans-serif']
+        raleway: ['Raleway', 'sans-serif'],
+        Montserrat: ['Montserrat', 'sans-serif']
       }
     },
   },

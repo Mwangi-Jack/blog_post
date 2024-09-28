@@ -2,7 +2,9 @@ const showdown  = require('showdown');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 // Initialize Google Generative AI
-const genAI = new GoogleGenerativeAI('AIzaSyAk9WLaRFy3f7c81oWzO6C53puq2_O-REQ');
+const API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
+
+const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 const converter = new showdown.Converter();
 

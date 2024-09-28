@@ -7,6 +7,7 @@ import { FaStarHalfAlt } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
 import usePostsHook from "../../hooks/usePostsHook";
+import countTimeFrom from "../../utils/countTimeFrom";
 
 function Rating({rate}) {
 	return (
@@ -49,9 +50,9 @@ function Card({ post, edit }) {
 				<img src={post.banner_url} alt={post.id} className="h-full w-full" />
 			</div>
 			<div className="mt-4 space-y-2">
-				<div className="text-sm space-x-2">
+				<div className="text-xs space-x-12">
 					<span className="font-bold">{post.category}</span>
-					<span>{post.created_at}</span>
+					<span>{countTimeFrom(post.created_at)}</span>
 				</div>
 				<div className="space-y-2">
 					<h1 className="font-bold text-xl">{post.title}</h1>
