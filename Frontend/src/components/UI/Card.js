@@ -73,7 +73,6 @@ function Card({ post, edit }) {
 				</div>
 			</div>
 			<div className={`${edit ? 'hidden': 'mt-2'}`}>
-				{ post._id}
 				<Link to={`/posts/${post._id}`}>Read More...</Link>
 			</div>
 		</div>
