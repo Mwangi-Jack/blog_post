@@ -16,11 +16,7 @@ function Footer() {
 					get a response the following day
 				</p>
 			</div>
-			<div className="text-center mt-4 space-y-4 mb-2">
-				<div className="border flex flex-col justify-center">
-					<img src="/static/images/rsz_1newblogpost.png" className="w-56 h-56 border relative bottom-20" alt="BLOG POST LOGO" />
-					hello world
-				</div>
+			<div className="text-center mt-8 space-y-4 mb-2">
 				<div className="space-x-4">
 					{links.map((link, index) => (
 						<a key={index} href={link.path} >{link.name}</a>

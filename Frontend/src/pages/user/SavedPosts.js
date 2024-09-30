@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import UserIndex from "./UserIndex"
+import Loading from '../../components/Loading'
 import Card from '../../components/UI/Card'
 import axios from "axios";
 
@@ -32,7 +33,7 @@ function SavedPosts() {
 				<h1>SAVED POSTS</h1>
 				{
 					loading ? (
-						<div>Loading....</div>
+						<Loading />
 					)
 					:
 					(

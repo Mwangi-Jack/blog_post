@@ -62,12 +62,14 @@ function usePostsHook() {
 
     async function getOnePost(postId) {
         let res;
+        console.log("POST ID:::", postId);
+        console.log(`${BASE_URL}/posts/${postId}`)
         try {
             const response = await axios.get(`${BASE_URL}/posts/${postId}`);
             console.log("ONE POST:::", response.data);
             res = response.data;
         } catch (error) {
-            console.log('Error');
+            console.log('Error', error);
             res = error.message
         }
 
@@ -115,6 +117,23 @@ function usePostsHook() {
         }
     }
 
+    async function likePost(post, action) {
+        console.log("WE WANT TO", post)
+        let likes = post.likes;
+        likes =  action === 'dislike' ? likes - 1 : likes + 1;
+        console.log("LIKES::::", likes);
+        const likedPost = action === 'dislike' ? {...post, likes: post.likes - 1 } : {...post, likes: +post.likes + 1 }
+
+        console.log("LIKED POST:::", likedPost.likes);
+        // try {
+        //     const response = await axios.put(`${BASE_URL}/posts/${post._id}`, likedPost);
+        //     console.log(response.data);
+
+        // } catch(err) {
+        //     console.log("Error while Liking post",err)
+        // }
+    }
+
 
     return {
 		posts,
@@ -129,7 +148,8 @@ function usePostsHook() {
         editPost,
         deletePost,
         setCurrentPage,
-        setLimit
+        setLimit,
+        likePost,
 	};
 }
 

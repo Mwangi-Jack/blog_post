@@ -1,25 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Tooltip } from "react-tooltip";
 import parse from 'html-react-parser';
-import { BiLike } from "react-icons/bi";
-import { BiSolidLike } from "react-icons/bi";
-import { BiCommentAdd } from "react-icons/bi";
-import { IoBookmark } from "react-icons/io5";
-import { IoBookmarkOutline } from "react-icons/io5";
+
 import PageControls from "../components/UI/PageControls";
-import { FaShare } from "react-icons/fa6";
 import usePostsHook from "../hooks/usePostsHook";
 import useUserHook from "../hooks/useUserHook";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import countTimeFrom from "../utils/countTimeFrom";
 import Card from "../components/UI/Card";
+import PostEngagements from "../components/PostEngagements";
 
 
 function PostView() {
 	const { id } = useParams();
-	const { posts, isLoading, getOnePost } = usePostsHook();
+	const { posts, isLoading, getOnePost, likePost } = usePostsHook();
 	const user = JSON.parse(localStorage.getItem('user'));
 
 	const [ isLike, setIsLike ] = useState(false);
@@ -28,12 +23,10 @@ function PostView() {
 
 	const { savePost } = useUserHook();
 
-
-	// console.log("ONE POST:::", getOnePost(id))
-
 	useEffect(() => {
 		const fetchPost = async () => {
 			const post = await getOnePost(id);
+			console.log("POST ON VEIW:::", post);
 			setPostOnView(post);
 		}
 
@@ -47,6 +40,7 @@ function PostView() {
 	const authorPosts = posts.filter(post => post.author_id === postOnView.author_id)
 
 	const toggleLike = () => {
+		isLike ? likePost(postOnView, 'dislike') : likePost(postOnView, 'like')
 		setIsLike(!isLike);
 	}
 
@@ -85,42 +79,8 @@ function PostView() {
 						{parse(postOnView.content)}
 					</div>
 				</div>
-				<div className="flex justify-center py-10">
-					<div className="flex justify-between border-y py-1 px-4 w-full md:w-3/5">
-						<div className="flex space-x-4">
-							<div className=" cursor-pointer flex flex-col items-center">
-								{
-									isLike ?  <BiSolidLike data-tooltip-id="like" data-tooltip-content="Dislike" onClick={toggleLike} size={24} color="#7C4EE4" /> :
-									<BiLike data-tooltip-id="like" data-tooltip-content="Like"  onClick={toggleLike} size={24} color="#7C4EE4"/>
-								}
-								 <Tooltip id="like" place="top" style={{ backgroundColor: 'black', color: 'white' }} />
-							</div>
-							<div  className=" cursor-pointer flex flex-col items-center">
-								<BiCommentAdd  data-tooltip-id="comment" data-tooltip-content="Add Comment" size={24} color="#7C4EE4"/>
-								<Tooltip id="comment" place="top" style={{ backgroundColor: 'black', color: 'white' }} />
-							</div>
-
-						</div>
-						<div className="flex space-x-4">
-							<div  className=" cursor-pointer flex flex-col items-center">
-								{
-									isSaved ?
-									<IoBookmark data-tooltip-id="save" data-tooltip-content="Unsave" onClick={handlePostSave} size={24} color="#7C4EE4"/>
-									// 'saved'
-									:
-									<IoBookmarkOutline data-tooltip-id="save" data-tooltip-content="Save" onClick={handlePostSave} size={24} color="#7C4EE4"/>
-
-								}
-								<Tooltip id="save" place="top" style={{ backgroundColor: 'black', color: 'white' }} />
-							</div>
-							<div  className=" cursor-pointer flex flex-col items-center">
-								<FaShare data-tooltip-id="save" data-tooltip-content="Share"  size={24} color="#7C4EE4"/>
-								<Tooltip id="share" place="top" style={{ backgroundColor: 'black', color: 'white' }} />
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
+			<PostEngagements isLike={isLike} isSaved={isSaved} toggleLike={toggleLike} handlePostSave={handlePostSave} />
 			<PageControls />
 
 			<div className="px-4 ">

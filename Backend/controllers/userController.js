@@ -75,7 +75,6 @@ export async function getUserSavedPosts(req, res) {
 
 	try {
 		const userWithSavedPosts = await User.findById(userId)
-		.select('saved')
 		.populate('saved')
 		.exec();
 
@@ -83,7 +82,7 @@ export async function getUserSavedPosts(req, res) {
 			return res.status(404).json({ message: 'User Not Found'})
 		}
 
-		console.log(userWithSavedPosts);
+		console.log("user", userWithSavedPosts);
 		return res.status(200).json(userWithSavedPosts)
 
 	} catch (err) {

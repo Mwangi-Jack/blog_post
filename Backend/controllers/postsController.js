@@ -19,10 +19,15 @@ export async function getAllPosts(req, res) {
 
 export async function getPost(req, res) {
 	const { postId } = req.params;
+
+	if (!mongoose.Types.ObjectId.isValid(postId)) {
+		return res.status(400).json({ message: 'Invalid Post ID' });
+	}
+
 	try {
 		const postWithAuthor = await Posts.aggregate([
 			{
-				$match: {_id: new mongoose.Types.ObjectId(postId)}
+				$match: { _id: new mongoose.Types.ObjectId(postId) }
 			},
 			{
 				$lookup: {
@@ -49,6 +54,7 @@ export async function getPost(req, res) {
 					category: 1,
 					content: 1,
 					created_at: 1,
+					likes: 1,
 					'author.Fname': 1,
 					'author.Sname': 1,
 					'author.profile_url': 1
@@ -56,15 +62,19 @@ export async function getPost(req, res) {
 			}
 		]);
 
+
 		if (!postWithAuthor || postWithAuthor.length === 0) {
-			return res.status(404).json({ message: 'Post Not Found'})
+			return res.status(404).json({ message: 'Post Not Found' });
 		}
 
-		return res.status(200).json(postWithAuthor[0])
-	} catch(err) {
-		console.log(err)
+		return res.status(200).json(postWithAuthor[0]);
+
+	} catch (err) {
+		console.error('Error fetching post:', err);
+		return res.status(500).json({ message: 'An Internal Error Occurred' });
 	}
 }
+
 
 export async function createPost(req, res) {
 	try {

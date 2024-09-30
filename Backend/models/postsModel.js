@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const postsModel = new mongoose.Schema({
-	author_id: { type: String, required: true},
+	author_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
 	tags: { type: Array, default: []},
 	title: { type: String, required: true },
 	description: { type: String, default: 'A small description about this blog is here' },
@@ -13,6 +13,7 @@ const postsModel = new mongoose.Schema({
 	category: { type: String, required: true },
 	content: { type: String, required: true },
 	created_at: { type: Date, required: true },
+	likes: { type: Number, default: 0 }
 })
 
 const Posts =  mongoose.models.Posts || mongoose.model('Posts', postsModel);
