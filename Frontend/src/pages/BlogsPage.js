@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import usePostsHook from "../hooks/usePostsHook";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
@@ -12,12 +12,23 @@ import { PostCategories } from '../utils/PostCategories';
 function BlogsPage() {
 	const { posts, isLoading, currentPage, setCurrentPage, totalPages } = usePostsHook();
 	const [categories, setCategories] = useState(PostCategories);
+	const [ searchCategories, setSearchCategories ] = useState([])
 
-	const handleCheck = (id) => {
+	const handleCheck = (id, e) => {
+		const { name } = e.target;
+		setSearchCategories((prevCategories) => {
+			if (prevCategories.includes(name)) {
+				return prevCategories.filter((item) => item !== name)
+			} else{
+				return [...prevCategories, name]
+			}
+		})
 		setCategories((prevCategories) =>
 			prevCategories.map((category) =>
 				category.id === id ? {...category, isCheck: !category.isCheck} : category))
 	}
+
+	const filteredPost = searchCategories.length === 0 ? posts : posts.filter((post) => searchCategories.includes(post.category))
 
 	return (
 		<div className="mt-20">
@@ -38,7 +49,7 @@ function BlogsPage() {
 					{
 						isLoading ? <Loading /> :
 						<div className="mx-4 my-10 md:grid md:grid-cols-4 md:gap-12">
-							{posts.map((post)=> <Card post={post} key={post._id}/>)}
+							{filteredPost.map((post)=> <Card post={post} key={post._id}/>)}
 						</div>
 					}
 				</div>

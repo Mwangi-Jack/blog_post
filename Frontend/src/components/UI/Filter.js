@@ -9,10 +9,10 @@ function Filter({ handleCheck, categories }) {
 			{categories.map((category, key) => (
 				<button
 					key={category.id}
-					name={`${category.name} ${key}`}
+					name={category.name}
 					className={` flex items-center space-x-4 text-sm font-Montserrat px-2 py-0 border rounded-lg focus:outline-none transition-colors
 						${category.isCheck ? 'bg-[#7C4EE4] text-white ' : 'bg-gray-200'}`}
-					onClick={() => handleCheck(category.id)}
+					onClick={(e) => handleCheck(category.id, e)}
 					>
 					{category.name}
 					<IoIosCheckmark className={category.isCheck ? 'fles': 'hidden'} />
