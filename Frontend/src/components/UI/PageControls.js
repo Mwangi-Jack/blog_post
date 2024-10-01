@@ -14,16 +14,16 @@ function PageControls({ currentPage, setCurrentPage, totalPages }) {
   };
 
   return (
-    <div className="flex justify-between mx-32 py-10">
+    <div className="flex justify-center space-x-24 mx-4 mb-6 md:mx-32 md:py-10">
       <div
-        className={`cursor-pointer flex items-center space-x-2 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`flex items-center space-x-2 ${currentPage == 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
         onClick={handlePrevious}
       >
         <LuArrowLeftFromLine size={24} color="#7C4EE4" />
         <p>Previous</p>
       </div>
       <div
-        className={`cursor-pointer md:flex items-center space-x-2 ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`flex items-center space-x-2 ${currentPage == totalPages ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
         onClick={handleNext}
       >
         <p>Next</p>

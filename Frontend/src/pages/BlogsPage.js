@@ -1,14 +1,23 @@
+import { useState } from 'react';
 import usePostsHook from "../hooks/usePostsHook";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import Card from "../components/UI/Card";
-import { LuArrowLeftFromLine } from "react-icons/lu";
-import { LuArrowRightFromLine } from "react-icons/lu";
 import PageControls from "../components/UI/PageControls";
 import Loading from "../components/Loading";
+import Filter from '../components/UI/Filter'
+import { PostCategories } from '../utils/PostCategories';
+
 
 function BlogsPage() {
 	const { posts, isLoading, currentPage, setCurrentPage, totalPages } = usePostsHook();
+	const [categories, setCategories] = useState(PostCategories);
+
+	const handleCheck = (id) => {
+		setCategories((prevCategories) =>
+			prevCategories.map((category) =>
+				category.id === id ? {...category, isCheck: !category.isCheck} : category))
+	}
 
 	return (
 		<div className="mt-20">
@@ -24,6 +33,7 @@ function BlogsPage() {
 						them all along
 					</p>
 				</div>
+				<Filter categories={categories} handleCheck={handleCheck} />
 				<div>
 					{
 						isLoading ? <Loading /> :
