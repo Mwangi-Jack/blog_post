@@ -1,15 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { IoGrid } from "react-icons/io5";
 import { MdOutlinePostAdd } from "react-icons/md";
 import { BsGearFill } from "react-icons/bs";
 import { IoLogOutOutline } from "react-icons/io5";
 import { TbPlaylistAdd } from "react-icons/tb";
 import { IoBookmark } from "react-icons/io5";
+import { AiFillHome } from "react-icons/ai";
+
 
 
 function SideNav() {
 	const navigate = useNavigate()
 
+	const { pathname } = useLocation();
+	const currentPath = pathname.split("/").filter(path => path !== '')[0]
+	console.log("Current Path:::", currentPath);
 	const handleLogout = () => {
 		navigate('/signin')
 	}
@@ -24,21 +30,25 @@ function SideNav() {
 				<span>New Post</span>
 			</Link>
 			<div className="flex flex-col items-center space-y-6">
+				<Link  to="/" className="w-28 flex items-center space-x-1">
+					<AiFillHome size={25} />
+					<span className="text- font-bold w-12">Home</span>
+				</Link>
 				<Link  to="/dashboard" className=" w-28 flex space-x-1">
 					<IoGrid size={24} />
-					<span className="text- font-bold">Dashboard</span>
+					<span className={`${currentPath === 'dashboard' ? 'border-b': null } text- font-bold  w-20`}>Dashboard</span>
 				</Link>
-				<Link to="/dashboard/user-posts" className=" w-28 flex space-x-1">
+				<Link to="/user-posts" className=" w-28 flex space-x-1">
 					<MdOutlinePostAdd size={24} />
-					<span className="text- font-bold">My Posts</span>
+					<span className={`${currentPath === 'user-posts' ? 'border-b': null } text- font-bold  w-20`}>My Posts</span>
 				</Link>
-				<Link to="/dashboard/saved-posts" className=" w-28 flex space-x-1">
+				<Link to="/saved-posts" className=" w-28 flex space-x-1">
 					<IoBookmark size={24} />
-					<span className="text- font-bold">Saved</span>
+					<span className={`${currentPath === 'saved-posts' ? 'border-b': null } text- font-bold  w-20`}>Saved</span>
 				</Link>
-				<Link to="/dashboard/settings/" className=" w-28 flex space-x-1">
+				<Link to="/settings/" className=" w-28 flex space-x-1">
 					<BsGearFill size={24} />
-					<span className="text- font-bold">Settings</span>
+					<span className={`${currentPath === 'settings' ? 'border-b': null } text- font-bold  w-20`}>Settings</span>
 				</Link>
 				<div onClick={handleLogout}className="cursor-pointer w-28 flex space-x-1">
 					<IoLogOutOutline size={24} />

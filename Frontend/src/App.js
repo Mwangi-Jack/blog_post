@@ -43,11 +43,11 @@ function App() {
               <Route path='/code-verification' element={<CodeVerify />} />
               <Route path='/set-new-password' element={<SetPassword />} />
               <Route path='/dashboard/*' element={<PrivateRoutes> <Dashboard /> </PrivateRoutes>} />
-              <Route path='/dashboard/new-post/' element={<PrivateRoutes> <BlogEditor /> </PrivateRoutes>} />
-              <Route path='/dashboard/edit/:postId/' element={<PrivateRoutes> <BlogEditor /></PrivateRoutes>} />
-              <Route path='/dashboard/user-posts/' element={<PrivateRoutes> <UserPosts /> </PrivateRoutes>} />
-              <Route path='/dashboard/saved-posts/' element={<PrivateRoutes> <SavedPosts /> </PrivateRoutes>} />
-              <Route path='/dashboard/settings/' element={<PrivateRoutes> <Settings /> </PrivateRoutes>} />
+              <Route path='/new-post/' element={<PrivateRoutes> <BlogEditor /> </PrivateRoutes>} />
+              <Route path='/edit/:postId/' element={<PrivateRoutes> <BlogEditor /></PrivateRoutes>} />
+              <Route path='/user-posts/' element={<PrivateRoutes> <UserPosts /> </PrivateRoutes>} />
+              <Route path='/saved-posts/' element={<PrivateRoutes> <SavedPosts /> </PrivateRoutes>} />
+              <Route path='/settings/' element={<PrivateRoutes> <Settings /> </PrivateRoutes>} />
               <Route path='*' element={<NotFound />} />
           </Routes>
         </Suspense>

@@ -29,9 +29,9 @@ function usePostsHook() {
     useEffect(() => {
         async function getPosts() {
             try {
-                console.log(`${BASE_URL}/posts?page=${currentPage}&limit=${limit}`)
+                // console.log(`${BASE_URL}/posts?page=${currentPage}&limit=${limit}`)
                 const response = await axios.get(`${BASE_URL}/posts?page=${currentPage}&limit=${limit}`);
-                console.log('Response:', response.data.posts);
+                // console.log('Response:', response.data.posts);
                 setCurrentPage(response.data.currentPage);
                 setTotalPages(response.data.totalPages);
                 setPosts(response.data.posts);
@@ -50,8 +50,8 @@ function usePostsHook() {
 
 		const featured = posts.filter(post => post.id === '11')[0];
 
-		console.log("FEATURED POSTS::::",featured)
-		console.log("ALL POSTS::::",posts[10])
+		// console.log("FEATURED POSTS::::",featured)
+		// console.log("ALL POSTS::::",posts[10])
 		return featured;
 	}
 
@@ -62,8 +62,8 @@ function usePostsHook() {
 
     async function getOnePost(postId) {
         let res;
-        console.log("POST ID:::", postId);
-        console.log(`${BASE_URL}/posts/${postId}`)
+        // console.log("POST ID:::", postId);
+        // console.log(`${BASE_URL}/posts/${postId}`)
         try {
             const response = await axios.get(`${BASE_URL}/posts/${postId}`);
             console.log("ONE POST:::", response.data);
@@ -82,7 +82,7 @@ function usePostsHook() {
             ...blogForm,
             "created_at": getCurrentDateTime(),
         }
-        console.log("FULL FORM:::", blogForm);
+        // console.log("FULL FORM:::", blogForm);
         try {
             const response = await axios.post(`${BASE_URL}/posts`, data)
             console.log(response);
@@ -94,7 +94,7 @@ function usePostsHook() {
     }
 
     async function editPost(postId, blogform) {
-        console.log(postId, blogform);
+        // console.log(postId, blogform);
         try {
             const response = await axios.put(`${BASE_URL}/posts/${postId}`, blogform);
             console.log(response);

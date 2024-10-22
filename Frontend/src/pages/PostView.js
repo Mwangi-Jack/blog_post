@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import countTimeFrom from "../utils/countTimeFrom";
 import Card from "../components/UI/Card";
 import PostEngagements from "../components/PostEngagements";
+import { handleFail, handleInfor } from "../components/UI/AlertHandler";
 
 
 function PostView() {
@@ -18,7 +19,7 @@ function PostView() {
 	const user = JSON.parse(localStorage.getItem('user'));
 
 	const [ isLike, setIsLike ] = useState(false);
-	const [ isSaved, setIsSaved ] = useState(user.saved.includes(id));
+	const [ isSaved, setIsSaved ] = useState(user?.saved.includes(id));
 	const [ postOnView, setPostOnView ] = useState({});
 
 	const { savePost } = useUserHook();
@@ -45,8 +46,12 @@ function PostView() {
 	}
 
 	const handlePostSave = () => {
-		setIsSaved(!isSaved);
-		 savePost(postOnView._id);
+		if (user){
+			setIsSaved(!isSaved);
+			savePost(postOnView._id);
+		} else {
+			handleInfor("Create Account Or Loggin to Save Post")
+		}
 	}
 
 	return (

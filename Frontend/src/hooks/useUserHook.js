@@ -76,8 +76,6 @@ function useUserHook() {
 
 	async function savePost(postId) {
 		const user = JSON.parse(localStorage.getItem('user'));
-		if (!user) return handleInfor("Create Account Or Loggin to Save Post")
-
 		console.log("USER:::", user);
 		if(user.saved.includes(postId)) {
 			console.log('Unsaving...')
